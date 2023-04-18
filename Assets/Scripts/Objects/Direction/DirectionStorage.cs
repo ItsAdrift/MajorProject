@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DirectionStorage : MonoBehaviour
 {
-    public enum Direction { NORTH, SOUTH, EAST, WEST };
+    public enum Direction { IDENTIFY, NORTH, SOUTH, EAST, WEST };
 
     private static IDictionary<Direction, Vector3> map = new Dictionary<Direction, Vector3>();
 
