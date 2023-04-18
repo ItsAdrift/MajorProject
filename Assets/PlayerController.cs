@@ -1,0 +1,56 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float rotationSpeed = 5f;
+    private Vector2 movementInput;
+
+    [SerializeField] private bool snapRotation = false;
+
+    private bool precision = false;
+
+    void Update()
+    {
+        if (precision)
+        {
+            return;
+        }
+
+        Vector3 movementDirection = new Vector3(movementInput.x, 0, movementInput.y);
+        movementDirection.Normalize();
+
+        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
+
+        if (movementDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            if (snapRotation)
+            {
+                transform.rotation = toRotation;
+                return;
+            }
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    public void OnMove(InputAction.CallbackContext c) => movementInput = c.ReadValue<Vector2>();
+
+    public void OnPrecision(InputAction.CallbackContext c)
+    {
+        if (c.action.name != "Precision Movement")
+            return;
+
+        if (c.phase == InputActionPhase.Performed)
+        {
+            precision = true;
+        } else if (c.phase == InputActionPhase.Canceled)
+        {
+            precision = false;
+        }
+    }
+}
