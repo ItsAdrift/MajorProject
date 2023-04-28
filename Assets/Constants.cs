@@ -7,13 +7,14 @@ public class Constants : MonoBehaviour
     static Constants instance;
 
     [SerializeField] public float conveyorSpeed = 0.25f;
+    [SerializeField] public float conveyorHeight = 0.5f;
 
     private void Awake()
     {
         instance = this;
     }
 
-    public static Constants GetInstance()
+    public static Constants Get()
     {
         return instance;
     }

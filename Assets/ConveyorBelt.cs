@@ -13,8 +13,6 @@ public class ConveyorBelt : MonoBehaviour
 
     bool moved = false;
 
-    // Next Slot
-
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +21,11 @@ public class ConveyorBelt : MonoBehaviour
             direction = GetDirection(transform.rotation.y);
         }
 
+        FindNext();
+    }
+
+    public void FindNext()
+    {
         // Set the raycast origin position and direction
         Vector3 raycastOrigin = transform.position; // Use the position of the object that the script is attached to as the origin
         Vector3 raycastDirection = transform.forward; // Use the forward direction of the object that the script is attached to as the direction
@@ -34,11 +37,8 @@ public class ConveyorBelt : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(raycastOrigin, raycastDirection, out hit, raycastDistance))
         {
-            // Print the name of the object that the raycast hit
-            Debug.Log("Hit object: " + hit.collider.gameObject.name);
             next = hit.collider.gameObject.GetComponent<ConveyorBelt>();
         }
-
     }
 
 
@@ -73,14 +73,14 @@ public class ConveyorBelt : MonoBehaviour
 
     private void Update()
     {
-        moveDuration = GetInstance().conveyorSpeed;
+        moveDuration = Get().conveyorSpeed;
         if (item != null)
         {
             if (elapsedTime < moveDuration)
             {
                 float t = elapsedTime / moveDuration;
                 Vector3 pos = Vector3.Lerp(item.transform.position, transform.position, t);
-                pos.y = 0.5f;
+                pos.y = Get().conveyorHeight;
                 item.transform.position = pos;
                 elapsedTime += Time.deltaTime;
             }

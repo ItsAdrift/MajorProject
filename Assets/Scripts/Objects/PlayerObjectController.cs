@@ -51,16 +51,19 @@ public class PlayerObjectController : MonoBehaviour
         if (heldEntity.placeable)
         {
             building.Place();
+            targetController.enabled = true;
             return;
         }
 
         heldEntity.transform.SetParent(null);
         heldEntity = null;
-        
     }
 
     public void Pickup()
     {
+        if (heldEntity != null)
+            return;
+
         if (targetController == null)
             return;
 
@@ -73,6 +76,7 @@ public class PlayerObjectController : MonoBehaviour
             o.transform.localRotation = Quaternion.Euler(Vector3.zero);
             if (heldEntity.placeable)
                 building.HandleEntity(heldEntity);
+            targetController.enabled = false;
         }
     }
 }

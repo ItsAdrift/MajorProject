@@ -18,7 +18,7 @@ public class Conveyor : MonoBehaviour
         for (int i = 0; i < objects.Count; i++)
         {
             // new Vector3(0, 0.1f, 0) + (Get(direction) * Constants.GetInstance().conveyorSpeed)
-            objects[i].GetComponent<Rigidbody>().velocity = (Get(direction) * Constants.GetInstance().conveyorSpeed);
+            objects[i].GetComponent<Rigidbody>().velocity = (Get(direction) * Constants.Get().conveyorSpeed);
         }
     }
 
@@ -40,7 +40,7 @@ public class Conveyor : MonoBehaviour
         if (other.gameObject.tag == "Object")
         {
             objects.Remove(other.gameObject.GetComponent<Rigidbody>());
-            other.gameObject.GetComponent<Rigidbody>().AddForce(Get(direction) * Constants.GetInstance().conveyorSpeed);
+            other.gameObject.GetComponent<Rigidbody>().AddForce(Get(direction) * Constants.Get().conveyorSpeed);
         }
     }
 }

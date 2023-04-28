@@ -8,10 +8,17 @@ public class ConveyorPlacementHandler : MonoBehaviour, IPlacementHandler
 {
     public void handle(Entity e)
     {
+        Debug.Log("Handling");
         float rotY = e.transform.rotation.y;
-        Conveyor conveyor = e.gameObject.GetComponent<Conveyor>();
+        ConveyorBelt conveyor = e.gameObject.GetComponent<ConveyorBelt>();
 
         conveyor.direction = GetDirection(rotY);
+        conveyor.FindNext();
+        foreach (ConveyorBelt c in FindObjectsOfType<ConveyorBelt>())
+        {
+            Debug.Log(c.gameObject.name);
+            c.FindNext();
+        }
     }
 
     private Direction GetDirection(float r)

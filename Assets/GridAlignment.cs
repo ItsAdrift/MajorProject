@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GridAlignment : MonoBehaviour
 {
-    [SerializeField] private Vector2 alignment;
+    [SerializeField] private Vector3 alignment;
     [HideInInspector] private Vector3 offset;
 
     private void Awake()
     {
-        offset = new Vector3(alignment.x, 0, alignment.y);
+        offset = new Vector3(alignment.x, alignment.z, alignment.y);
     }
 
     public Vector3 GetOffset() { return offset; }

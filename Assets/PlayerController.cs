@@ -12,7 +12,17 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool snapRotation = false;
 
+    CharacterController controller;
+
     private bool precision = false;
+
+    void Awake()
+    {
+        Debug.Log("Awaken");
+        CameraControl.Instance.m_Targets.Add(transform);
+
+        controller = GetComponent<CharacterController>();
+    }
 
     void Update()
     {
@@ -24,7 +34,9 @@ public class PlayerController : MonoBehaviour
         Vector3 movementDirection = new Vector3(movementInput.x, 0, movementInput.y);
         movementDirection.Normalize();
 
-        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
+        //transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
+
+        controller.Move(movementDirection * speed * Time.deltaTime);
 
         if (movementDirection != Vector3.zero)
         {

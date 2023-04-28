@@ -18,7 +18,7 @@ public class Entity : MonoBehaviour
         outline = gameObject.AddComponent<Outline>();
         if (outline != null)
         {
-            outline.OutlineWidth = 5f;
+            outline.OutlineWidth = 1f;
             outline.enabled = false;
         }
 
