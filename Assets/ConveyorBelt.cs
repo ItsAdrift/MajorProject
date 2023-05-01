@@ -28,13 +28,15 @@ public class ConveyorBelt : MonoBehaviour
     {
         // Set the raycast origin position and direction
         Vector3 raycastOrigin = transform.position; // Use the position of the object that the script is attached to as the origin
+        raycastOrigin -= new Vector3(0, 0.1f, 0);
         Vector3 raycastDirection = transform.forward; // Use the forward direction of the object that the script is attached to as the direction
 
         // Set the maximum distance that the raycast can travel
-        float raycastDistance = 1f;
+        float raycastDistance = 1.5f;
 
         // Perform the raycast and get the hit information
         RaycastHit hit;
+        Debug.DrawRay(raycastOrigin, raycastDirection, Color.green, 5);
         if (Physics.Raycast(raycastOrigin, raycastDirection, out hit, raycastDistance))
         {
             next = hit.collider.gameObject.GetComponent<ConveyorBelt>();

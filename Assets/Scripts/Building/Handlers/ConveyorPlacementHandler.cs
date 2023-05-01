@@ -8,7 +8,6 @@ public class ConveyorPlacementHandler : MonoBehaviour, IPlacementHandler
 {
     public void handle(Entity e)
     {
-        Debug.Log("Handling");
         float rotY = e.transform.rotation.y;
         ConveyorBelt conveyor = e.gameObject.GetComponent<ConveyorBelt>();
 
@@ -16,7 +15,6 @@ public class ConveyorPlacementHandler : MonoBehaviour, IPlacementHandler
         conveyor.FindNext();
         foreach (ConveyorBelt c in FindObjectsOfType<ConveyorBelt>())
         {
-            Debug.Log(c.gameObject.name);
             c.FindNext();
         }
     }
