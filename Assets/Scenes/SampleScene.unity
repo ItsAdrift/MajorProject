@@ -6420,16 +6420,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: conveyor (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5218478887035294429, guid: a936dfbdc7943bd45a7dbbf94d3bba43,
-        type: 3}
-      propertyPath: alignment.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5218478887035294429, guid: a936dfbdc7943bd45a7dbbf94d3bba43,
-        type: 3}
-      propertyPath: alignment.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5756017705100052408, guid: a936dfbdc7943bd45a7dbbf94d3bba43,
         type: 3}
       propertyPath: m_RootOrder
@@ -6648,9 +6638,10 @@ GameObject:
   - component: {fileID: 1694569315}
   - component: {fileID: 1694569314}
   - component: {fileID: 1694569318}
+  - component: {fileID: 1694569319}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Placeable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6726,7 +6717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694569313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.21, y: 0.54, z: 0}
+  m_LocalPosition: {x: 2.994, y: 1.162, z: -0.837}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6742,9 +6733,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694569313}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: d66347308e29ffc41a4722b0ab7dffa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1694569319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694569313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352b6cbd5749454409d1f6d963984478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: {fileID: 11400000, guid: 1dd6157da732cf5488840f4bbd6b7309, type: 2}
 --- !u!1 &1702655522
 GameObject:
   m_ObjectHideFlags: 0
@@ -7597,7 +7601,7 @@ PrefabInstance:
     - target: {fileID: 1259840241893121116, guid: 2f4bbbdcf21a6cb4aac0fd0b4f80db1f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5.09
       objectReference: {fileID: 0}
     - target: {fileID: 1259840241893121116, guid: 2f4bbbdcf21a6cb4aac0fd0b4f80db1f,
         type: 3}

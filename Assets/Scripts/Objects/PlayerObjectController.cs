@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerObjectController : MonoBehaviour
 {
     [SerializeField] public GameObject objectHold;
+    [SerializeField] public GameObject itemHold;
+
     [SerializeField] public GameObject precisionHold;
 
     [ReadOnly] public Entity heldEntity;
@@ -71,7 +73,12 @@ public class PlayerObjectController : MonoBehaviour
         {
             heldEntity = targetController.targetedEntity;
             GameObject o = targetController.targetedEntity.gameObject;
-            o.transform.SetParent(objectHold.transform);
+
+            Transform t = heldEntity is ItemEntity ? itemHold.transform : objectHold.transform;
+
+            o.transform.SetParent(t);
+
+
             o.transform.localPosition = Vector3.zero;
             o.transform.localRotation = Quaternion.Euler(Vector3.zero);
             if (heldEntity.placeable)

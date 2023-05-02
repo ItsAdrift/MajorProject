@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1199318629421152352}
   - component: {fileID: 1655455508893379595}
   - component: {fileID: 8638912998241003120}
+  - component: {fileID: 3932170192612289353}
   m_Layer: 0
   m_Name: Placeable Small Shelf
   m_TagString: Placeable
@@ -74,7 +75,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7598f48cf2c8c43468587dda30682d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alignment: {x: 0, y: 0}
+  alignment: {x: 0, y: 0, z: 0}
+--- !u!114 &3932170192612289353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887019973180147430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c818a83c1ca22d489adfc1e5ad9f256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 3
+  stack: 20
+  slots: []
 --- !u!1001 &9088691943719262752
 PrefabInstance:
   m_ObjectHideFlags: 0

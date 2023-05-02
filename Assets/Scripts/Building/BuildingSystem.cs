@@ -42,7 +42,8 @@ public class BuildingSystem : MonoBehaviour
     {
         Vector3Int cellPos = gridLayout.WorldToCell(position);
         position = grid.GetCellCenterWorld(cellPos);
-        position += align.GetOffset();
+        if (align != null)
+            position += align.GetOffset();
         return position;
     }
 

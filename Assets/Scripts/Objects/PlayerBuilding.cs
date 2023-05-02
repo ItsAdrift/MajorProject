@@ -42,6 +42,7 @@ public class PlayerBuilding : MonoBehaviour
 
         copy.transform.localPosition = Vector3.zero;
         copy.transform.rotation = Quaternion.Euler(0, e.rotation, 0);
+
         copy.transform.position = BuildingSystem.instance.SnapEntityCoordinateToGrid(copy.transform.position, gridAlignment);
 
         // Check for collisions
