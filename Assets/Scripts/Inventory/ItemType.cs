@@ -6,4 +6,5 @@ using UnityEngine;
 public class ItemType : ScriptableObject
 {
     public string id;
+    public Sprite render;
 }
