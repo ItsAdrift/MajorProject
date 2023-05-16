@@ -74,7 +74,7 @@ public class PlayerObjectController : MonoBehaviour
             heldEntity = targetController.targetedEntity;
             GameObject o = targetController.targetedEntity.gameObject;
 
-            Transform t = heldEntity is ItemEntity ? itemHold.transform : objectHold.transform;
+            Transform t = heldEntity.gameObject.GetComponent<ItemEntity>() != null ? itemHold.transform : objectHold.transform;
 
             o.transform.SetParent(t);
 
