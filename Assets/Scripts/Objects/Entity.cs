@@ -35,4 +35,8 @@ public class Entity : MonoBehaviour
         this.targeted = b;
     }
 
+    public bool IsItem()
+    {
+        return gameObject.GetComponent<ItemEntity>() != null;
+    }
 }

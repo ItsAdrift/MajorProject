@@ -50,6 +50,12 @@ public class PlayerObjectController : MonoBehaviour
 
     public void Place()
     {
+        if (heldEntity.IsItem())
+        {
+            PlaceItem();
+            return;
+        }
+
         if (heldEntity.placeable)
         {
             building.Place();
@@ -57,6 +63,13 @@ public class PlayerObjectController : MonoBehaviour
             return;
         }
 
+        heldEntity.transform.SetParent(null);
+        heldEntity = null;
+    }
+
+    public void PlaceItem()
+    {
+        targetController.enabled = true;
         heldEntity.transform.SetParent(null);
         heldEntity = null;
     }

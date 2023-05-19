@@ -21,12 +21,30 @@ public class Inventory : MonoBehaviour
     {
         foreach (Slot slot in slots)
         {
-            if (slot.GetItem().type = item.type)
-                return false;
-            if (slot.GetAmount() < stack)
-                return false;
+            if (slot.GetItem() != null && slot.GetItem().type != item.type)
+                continue;
+            if (slot.GetAmount() >= stack)
+                continue;
 
-            slot.AddItem();
+            if (slot.GetItem() == null)
+                slot.SetItem(item);
+
+                                 // 20   // 14
+            int availableSpace = stack - slot.GetAmount(); // Available space in the slot
+            //  availableSpace = 6
+
+                // 19         // 6
+            if (item.amount > availableSpace)
+            {
+                             // 19          // 19         // 6
+                slot.AddItem(item.amount - (item.amount - availableSpace)); // 19 - (19 - 6) == 6
+
+                item.amount -= availableSpace; // Handling Overflow
+                AddItem(item); // Continue the cycle
+            } else
+            {
+                slot.AddItem(item.amount);
+            }   
             return true;
 
         }

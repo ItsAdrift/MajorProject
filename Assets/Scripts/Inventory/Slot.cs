@@ -27,6 +27,11 @@ public class Slot
         amount++;
     }
 
+    public void AddItem(int i)
+    {
+        amount+=i;
+    }
+
     public void RemoveItem()
     {
         if (amount == 0)
