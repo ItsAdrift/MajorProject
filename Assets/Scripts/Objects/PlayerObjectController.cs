@@ -15,6 +15,8 @@ public class PlayerObjectController : MonoBehaviour
     private PlayerTargetController targetController;
     private PlayerBuilding building;
 
+    [HideInInspector] public GameObject heldItemCopy;
+
     private void Start()
     {
         targetController = GetComponent<PlayerTargetController>();
@@ -50,7 +52,7 @@ public class PlayerObjectController : MonoBehaviour
 
     public void Place()
     {
-        if (heldEntity.IsItem())
+        if (heldEntity.IsItem() && !heldEntity.placeable)
         {
             PlaceItem();
             return;
@@ -96,6 +98,10 @@ public class PlayerObjectController : MonoBehaviour
             o.transform.localRotation = Quaternion.Euler(Vector3.zero);
             if (heldEntity.placeable)
                 building.HandleEntity(heldEntity);
+            else if (heldEntity.IsItem())
+            {
+                heldItemCopy = building.CreateCopy(heldEntity);
+            }
             targetController.enabled = false;
         }
     }

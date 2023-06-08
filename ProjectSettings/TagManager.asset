@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Placeable
   - Object
+  - ItemSlot
   layers:
   - Default
   - TransparentFX

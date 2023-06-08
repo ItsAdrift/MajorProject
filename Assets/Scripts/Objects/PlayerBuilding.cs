@@ -139,6 +139,20 @@ public class PlayerBuilding : MonoBehaviour
         e.gameObject.SetActive(false);
     }
 
+    public GameObject CreateCopy(Entity e)
+    {
+        GameObject copy = null;
+        copy = Instantiate(e.gameObject);
+        Destroy(copy.GetComponent<Entity>());
+
+        copyMat = copy.AddComponent<MaterialSwapper>();
+        copyMat.materials = new Material[] { Resources.Load("Material/Red", typeof(Material)) as Material, Resources.Load("Material/Green", typeof(Material)) as Material };
+
+        copy.SetActive(false);
+
+        return copy;
+    }
+
     public void HandleRotate()
     {
         if (placeableObject != null)
