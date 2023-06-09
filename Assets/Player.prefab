@@ -340,6 +340,7 @@ MonoBehaviour:
   itemHold: {fileID: 4437106577779578232}
   precisionHold: {fileID: 4719098514240899864}
   heldEntity: {fileID: 0}
+  heldItemCopy: {fileID: 0}
 --- !u!114 &5686369652651364788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e81759f5d6aa7409dda93257f5d90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 15
   target: {fileID: 0}
 --- !u!114 &-2780982579889646004
 MonoBehaviour:
@@ -409,6 +410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8022120ccf66db49a8d5ad5a2d5012f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targettingController: {fileID: 0}
+  playerObjectController: {fileID: 0}
 --- !u!143 &5471258163947777595
 CharacterController:
   m_ObjectHideFlags: 0

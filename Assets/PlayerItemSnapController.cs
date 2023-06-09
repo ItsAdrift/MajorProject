@@ -19,15 +19,29 @@ public class PlayerItemSnapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (targettingController.target != null && playerObjectController.heldEntity != null)
+        if (playerObjectController.heldEntity != null)
         {
             if (playerObjectController.heldEntity.IsItem())
             {
-                playerObjectController.heldItemCopy.transform.position = targettingController.target.transform.position;
-                playerObjectController.heldItemCopy.GetComponent<MaterialSwapper>().Set(1);
-                playerObjectController.heldItemCopy.SetActive(true);
-                playerObjectController.heldEntity.gameObject.SetActive(false);
+                if (targettingController.target != null)
+                {
+                    playerObjectController.heldItemCopy.transform.position = targettingController.target.transform.position;
+                    playerObjectController.heldItemCopy.GetComponent<MaterialSwapper>().Set(1);
+                    playerObjectController.heldItemCopy.SetActive(true);
+                    playerObjectController.heldEntity.gameObject.SetActive(false);
+
+                    playerObjectController.heldEntity.GetComponent<ItemEntity>().snapped = true;
+                }
+                else
+                {
+                    playerObjectController.heldItemCopy.SetActive(false);
+                    playerObjectController.heldEntity.gameObject.SetActive(true);
+
+                    playerObjectController.heldEntity.GetComponent<ItemEntity>().snapped = false;
+                }
             }
-        } 
+        }
+        
+        
     }
 }

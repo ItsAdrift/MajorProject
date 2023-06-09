@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class ItemEntity : MonoBehaviour
 {
-    
+    [ReadOnly] public bool snapped;
+    [ReadOnly] public ItemSlot slot;
 }

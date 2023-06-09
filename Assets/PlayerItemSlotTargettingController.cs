@@ -31,6 +31,9 @@ public class PlayerItemSlotTargettingController : MonoBehaviour
                 if (colliders[i].GetComponent<ItemSlot>() != null)
                 {
                     slot = colliders[i].GetComponent<ItemSlot>();
+                } else
+                {
+                    continue;
                 }
             }
         }

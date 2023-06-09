@@ -139,7 +139,7 @@ public class PlayerBuilding : MonoBehaviour
         e.gameObject.SetActive(false);
     }
 
-    public GameObject CreateCopy(Entity e)
+    public GameObject CreateCopy(Entity e, Vector3 rotation)
     {
         GameObject copy = null;
         copy = Instantiate(e.gameObject);
@@ -149,6 +149,8 @@ public class PlayerBuilding : MonoBehaviour
         copyMat.materials = new Material[] { Resources.Load("Material/Red", typeof(Material)) as Material, Resources.Load("Material/Green", typeof(Material)) as Material };
 
         copy.SetActive(false);
+
+        copy.transform.rotation = Quaternion.Euler(rotation);
 
         return copy;
     }

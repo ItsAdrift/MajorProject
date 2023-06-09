@@ -71,6 +71,15 @@ public class PlayerObjectController : MonoBehaviour
 
     public void PlaceItem()
     {
+        if (heldEntity.GetComponent<ItemEntity>().snapped)
+        {
+            heldEntity.GetComponent<ItemEntity>().snapped = false;
+            heldEntity.gameObject.SetActive(true);
+            heldEntity.transform.position = heldItemCopy.transform.position;
+            Destroy(heldItemCopy);
+
+
+        }
         targetController.enabled = true;
         heldEntity.transform.SetParent(null);
         heldEntity = null;
@@ -100,7 +109,7 @@ public class PlayerObjectController : MonoBehaviour
                 building.HandleEntity(heldEntity);
             else if (heldEntity.IsItem())
             {
-                heldItemCopy = building.CreateCopy(heldEntity);
+                heldItemCopy = building.CreateCopy(heldEntity, new Vector3(-90f, 0, 0));
             }
             targetController.enabled = false;
         }
