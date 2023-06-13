@@ -1,6 +1,8 @@
+using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerItemSlotTargettingController : MonoBehaviour
 {
@@ -14,26 +16,35 @@ public class PlayerItemSlotTargettingController : MonoBehaviour
         
     }
 
+    public List<Vector3> slots = new List<Vector3>();
+
     // Find the closest ItemSlot to the player
     public ItemSlot FindClosest()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         ItemSlot slot = null;
 
+        slots.Clear();
+
+
         float minSqrDistance = Mathf.Infinity;
         for (int i = 0; i < colliders.Length; i++)
         {
+            if (colliders[i].gameObject.tag != "ItemSlot")
+                continue;
+
             float sqrDistanceToCenter = (transform.position - colliders[i].transform.position).sqrMagnitude;
             if (sqrDistanceToCenter < minSqrDistance)
             {
                 minSqrDistance = sqrDistanceToCenter;
 
+                
+
                 if (colliders[i].GetComponent<ItemSlot>() != null)
                 {
+
                     slot = colliders[i].GetComponent<ItemSlot>();
-                } else
-                {
-                    continue;
+                    slots.Add(colliders[i].transform.position);
                 }
             }
         }
@@ -44,5 +55,15 @@ public class PlayerItemSlotTargettingController : MonoBehaviour
     public void TargetSlot(ItemSlot slot)
     {
         target=slot;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
+        foreach (Vector3 v in slots)
+        {
+            Gizmos.DrawCube(v, new Vector3(1, 1, 1));
+        }
+        
     }
 }
