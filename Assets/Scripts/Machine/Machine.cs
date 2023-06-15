@@ -1,0 +1,78 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+
+public class Machine : MonoBehaviour
+{
+    [SerializeField] public MachineType type;
+    [SerializeField] public ItemSlot[] itemSlots;
+
+    [SerializeField] public ItemSlot outputSlot;
+
+    private MachineTimer timer;
+    private MachineProductionHandler productionHandler;
+
+    public void Start()
+    {
+        // Machine Timer
+        if (!GetComponent<MachineTimer>())
+            timer = gameObject.AddComponent<MachineTimer>();
+        else
+            timer = GetComponent<MachineTimer>();
+
+        timer.timerInterval.AddListener(Interval);
+
+        // Production Handler
+        if (!GetComponent<MachineProductionHandler>())
+            productionHandler = gameObject.AddComponent<MachineProductionHandler>();
+        else
+            productionHandler = GetComponent<MachineProductionHandler>();
+    }
+
+    // This logic runs every second
+    public void Interval()
+    {
+        if (HasRequiredItemsForRecipe(GetSelectedRecipe()))
+        {
+            // Start Production
+            Debug.Log("Start Production");
+        }   
+    }
+
+    /*
+     * This method currently does nothing; however when recipe selection is supported,
+     * this method will be responsible for returing the correct recipe.
+     */
+    public MachineRecipe GetSelectedRecipe()
+    {
+        return type.recipes[0];
+    }
+
+    private bool HasRequiredItemsForRecipe(MachineRecipe recipe)
+    {
+        if (recipe == null) return false;
+
+        int count = 0;
+
+        for (int i = 0; i < recipe.ingredients.Length; i++) { 
+            if (recipe.ingredients[i] == null) continue;
+            if (recipe.ingredients[i].type == null) continue;
+
+            bool anySlotHasItem = false;
+            for (int j = 0; j < itemSlots.Length; j++)
+            {
+                if (recipe.ingredients[i].type == itemSlots[j].itemType)
+                {
+                    anySlotHasItem = true;
+                }
+            }
+
+            if (anySlotHasItem)
+                count++;
+        }
+
+        return (count >= recipe.ingredients.Length);
+    }
+
+}

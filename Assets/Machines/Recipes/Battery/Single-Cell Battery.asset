@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574cfdb88f86f694084220a674ca480f, type: 3}
+  m_Name: Single-Cell Battery
+  m_EditorClassIdentifier: 
+  name: Single Cell Battery
+  id: single_cell_battery
+  processsingTime: 5
+  ingredients:
+  - {fileID: 11400000, guid: 472938bdfa2e2c84381e2329ace884f4, type: 2}
+  - {fileID: 11400000, guid: d6ab41119909fc14c9f4319860027453, type: 2}
+  result: {fileID: 11400000, guid: 219a3ae1e4549f3418057a34941eadf5, type: 2}
