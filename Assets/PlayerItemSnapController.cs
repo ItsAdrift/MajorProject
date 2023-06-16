@@ -30,14 +30,18 @@ public class PlayerItemSnapController : MonoBehaviour
                     playerObjectController.heldItemCopy.SetActive(true);
                     playerObjectController.heldEntity.gameObject.SetActive(false);
 
-                    playerObjectController.heldEntity.GetComponent<ItemEntity>().snapped = true;
+                    ItemEntity itemEntity = playerObjectController.heldItemCopy.GetComponent<ItemEntity>();
+                    itemEntity.snapped = true;
+                    itemEntity.slot = targettingController.target;
                 }
                 else
                 {
                     playerObjectController.heldItemCopy.SetActive(false);
                     playerObjectController.heldEntity.gameObject.SetActive(true);
 
-                    playerObjectController.heldEntity.GetComponent<ItemEntity>().snapped = false;
+                    ItemEntity itemEntity = playerObjectController.heldItemCopy.GetComponent<ItemEntity>();
+                    itemEntity.snapped = false;
+                    itemEntity.slot = null;
                 }
             }
         }

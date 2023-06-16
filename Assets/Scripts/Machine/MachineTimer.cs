@@ -11,7 +11,7 @@ public class MachineTimer : MonoBehaviour
 
     [HideInInspector] public UnityEvent timerInterval;
 
-    private void Start()
+    private void Awake()
     {
         if (timerInterval == null)
             timerInterval = new UnityEvent();
@@ -34,6 +34,7 @@ public class MachineTimer : MonoBehaviour
 
     private void Interval()
     {
+        timerInterval.Invoke();
         //GetComponent<Machine>().Interval();
     }
 }

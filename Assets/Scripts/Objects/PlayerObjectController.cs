@@ -71,8 +71,15 @@ public class PlayerObjectController : MonoBehaviour
 
     public void PlaceItem()
     {
-        if (heldEntity.GetComponent<ItemEntity>().snapped)
+        if (heldItemCopy.GetComponent<ItemEntity>().snapped)
         {
+            ItemEntity entity = heldItemCopy.GetComponent<ItemEntity>();
+            Item item = heldEntity.GetComponent<Item>();
+            
+            Debug.Log("Type: " + item.type.name + " | Amount: " + item.amount);
+
+            entity.slot.item = item;
+
             heldEntity.GetComponent<ItemEntity>().snapped = false;
             heldEntity.gameObject.SetActive(true);
             heldEntity.transform.position = heldItemCopy.transform.position;

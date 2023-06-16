@@ -37,6 +37,7 @@ public class Machine : MonoBehaviour
         {
             // Start Production
             Debug.Log("Start Production");
+            productionHandler.StartProduction(this, timer, GetSelectedRecipe());
         }   
     }
 
@@ -62,7 +63,9 @@ public class Machine : MonoBehaviour
             bool anySlotHasItem = false;
             for (int j = 0; j < itemSlots.Length; j++)
             {
-                if (recipe.ingredients[i].type == itemSlots[j].itemType)
+                if (itemSlots[j].item == null) continue;
+
+                if (recipe.ingredients[i].type == itemSlots[j].item.type)
                 {
                     anySlotHasItem = true;
                 }

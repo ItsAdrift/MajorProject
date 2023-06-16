@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Cache;
 using UnityEngine;
 
 public class MachineProductionHandler : MonoBehaviour
@@ -19,6 +20,22 @@ public class MachineProductionHandler : MonoBehaviour
 
         // Start Timer for `time`
         timer.timerInterval.AddListener(Interval);
+
+        // Start Production and remove used materials
+        foreach (RecipeIngredient ingredient in recipe.ingredients)
+        {
+            foreach (ItemSlot slot in machine.itemSlots)
+            {
+                if (slot.item.type == ingredient.type)
+                {
+                    slot.item.amount -= ingredient.amount;
+                    if (slot.item.amount <= 0)
+                    {
+                        Destroy(slot.item.gameObject);
+                    }
+                }
+            }
+        }
     }
 
     void Interval()
@@ -32,7 +49,7 @@ public class MachineProductionHandler : MonoBehaviour
 
     private void FinishProduction()
     {
-        machine.outputSlot.itemType = recipe.result;
+        machine.outputSlot.item.type = recipe.result;
         Destroy(this);
     }
 }
