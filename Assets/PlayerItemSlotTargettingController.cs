@@ -35,15 +35,15 @@ public class PlayerItemSlotTargettingController : MonoBehaviour
 
             float sqrDistanceToCenter = (transform.position - colliders[i].transform.position).sqrMagnitude;
             if (sqrDistanceToCenter < minSqrDistance)
-            {
-                minSqrDistance = sqrDistanceToCenter;
-
-                
-
+            { 
                 if (colliders[i].GetComponent<ItemSlot>() != null)
                 {
+                    ItemSlot s = colliders[i].GetComponent<ItemSlot>();
+                    if (s.hasItem)
+                        continue;
 
-                    slot = colliders[i].GetComponent<ItemSlot>();
+                    slot = s;
+                    minSqrDistance = sqrDistanceToCenter;
                     slots.Add(colliders[i].transform.position);
                 }
             }

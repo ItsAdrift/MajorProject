@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemSlot : MonoBehaviour
 {
     public Item item;
+    public bool hasItem;
 
     public void Awake()
     {

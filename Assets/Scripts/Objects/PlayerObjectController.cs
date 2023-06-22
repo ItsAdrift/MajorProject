@@ -76,9 +76,12 @@ public class PlayerObjectController : MonoBehaviour
             ItemEntity entity = heldItemCopy.GetComponent<ItemEntity>();
             Item item = heldEntity.GetComponent<Item>();
             
+            heldEntity.GetComponent<ItemEntity>().slot = entity.slot;
+
             Debug.Log("Type: " + item.type.name + " | Amount: " + item.amount);
 
             entity.slot.item = item;
+            entity.slot.hasItem = true;
 
             heldEntity.GetComponent<ItemEntity>().snapped = false;
             heldEntity.gameObject.SetActive(true);
@@ -117,6 +120,11 @@ public class PlayerObjectController : MonoBehaviour
             else if (heldEntity.IsItem())
             {
                 heldItemCopy = building.CreateCopy(heldEntity, new Vector3(-90f, 0, 0));
+                if (heldEntity.GetComponent<ItemEntity>().slot != null)
+                {
+                    heldEntity.GetComponent<ItemEntity>().slot.item = null;
+                    heldEntity.GetComponent<ItemEntity>().slot.hasItem = false;
+                }
             }
             targetController.enabled = false;
         }

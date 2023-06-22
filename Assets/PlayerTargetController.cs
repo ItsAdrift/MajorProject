@@ -38,11 +38,10 @@ public class PlayerTargetController : MonoBehaviour
         {
             float sqrDistanceToCenter = (transform.position - colliders[i].transform.position).sqrMagnitude;
             if (sqrDistanceToCenter < minSqrDistance)
-            {
-                minSqrDistance = sqrDistanceToCenter;
-
+            { 
                 if (colliders[i].GetComponent<Entity>() != null)
                 {
+                    minSqrDistance = sqrDistanceToCenter;
                     bestFit = colliders[i].GetComponent<Entity>();
                 }
 

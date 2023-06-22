@@ -15,7 +15,10 @@ public class Entity : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        outline = gameObject.AddComponent<Outline>();
+        outline = GetComponent<Outline>();
+        if (outline == null)
+            outline = gameObject.AddComponent<Outline>();
+
         if (outline != null)
         {
             outline.OutlineWidth = 1f;
