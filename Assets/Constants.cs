@@ -9,6 +9,8 @@ public class Constants : MonoBehaviour
     [SerializeField] public float conveyorSpeed = 0.25f;
     [SerializeField] public float conveyorHeight = 0.5f;
 
+    [SerializeField] public GameObject parcel;
+
     private void Awake()
     {
         instance = this;

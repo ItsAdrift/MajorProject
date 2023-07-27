@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Pallet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ItemSlot[] slots;
 
-    // Update is called once per frame
-    void Update()
+    public void AddItemTypes(ItemType[] types)
     {
-        
+        int slot = 0;
+        foreach (ItemType type in types)
+        {
+            GameObject parcel = Instantiate(Constants.Get().parcel);
+            parcel.transform.position = slots[slot].transform.position;
+
+            Item item = parcel.GetComponent<Item>();
+            item.type = type;
+            slots[slot].item = item;
+
+            slot++;
+        }
     }
 }
