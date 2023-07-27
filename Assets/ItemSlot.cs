@@ -18,4 +18,10 @@ public class ItemSlot : MonoBehaviour
             item = gameObject.GetComponent<Item>();
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawCube(transform.position, new Vector3(0.9f,0.9f,0.9f));
+    }
 }
