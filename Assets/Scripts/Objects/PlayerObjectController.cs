@@ -93,10 +93,12 @@ public class PlayerObjectController : MonoBehaviour
         targetController.enabled = true;
         heldEntity.transform.SetParent(null);
         heldEntity = null;
+        //Destroy(heldItemCopy); // added this to stop freezes maybe)
     }
 
     public void Pickup()
     {
+        Debug.Log("Pickup");
         if (heldEntity != null)
             return;
 
@@ -119,7 +121,9 @@ public class PlayerObjectController : MonoBehaviour
                 building.HandleEntity(heldEntity);
             else if (heldEntity.IsItem())
             {
-                heldItemCopy = building.CreateCopy(heldEntity, new Vector3(-90f, 0, 0));
+                Debug.Log("About to create Copy | PlayerObjectController ln.123 ");
+                heldItemCopy = building.CreateCopy(heldEntity, new Vector3(-90f, 0, 0)); // This causes a freeze
+                Debug.Log("Created Copy PlayerObjectController ln.125");
                 if (heldEntity.GetComponent<ItemEntity>().slot != null)
                 {
                     heldEntity.GetComponent<ItemEntity>().slot.item = null;

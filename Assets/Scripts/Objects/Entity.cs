@@ -15,7 +15,7 @@ public class Entity : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        outline = GetComponent<Outline>();
+        /*outline = GetComponent<Outline>();
         if (outline == null)
             outline = gameObject.AddComponent<Outline>();
 
@@ -25,7 +25,7 @@ public class Entity : MonoBehaviour
             outline.enabled = false;
         }
 
-        placementHandler = GetComponent<IPlacementHandler>();
+        placementHandler = GetComponent<IPlacementHandler>();*/
     }
 
     private void Update()

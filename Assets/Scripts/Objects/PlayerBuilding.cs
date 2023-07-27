@@ -143,10 +143,17 @@ public class PlayerBuilding : MonoBehaviour
     {
         GameObject copy = null;
         copy = Instantiate(e.gameObject);
+
+        Debug.Log("Instantiatated e.gameObject (Made Copy) | PlayerBuilding ln.147 ");
+
         Destroy(copy.GetComponent<Entity>());
 
         copyMat = copy.AddComponent<MaterialSwapper>();
+
+        // Remove this line to stop freezing
         copyMat.materials = new Material[] { Resources.Load("Material/Red", typeof(Material)) as Material, Resources.Load("Material/Green", typeof(Material)) as Material };
+
+        Debug.Log("Added & Set Mats for MaterialSwapper | PlayerBuilding ln.156 ");
 
         copy.SetActive(false);
 

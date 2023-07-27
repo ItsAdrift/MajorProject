@@ -16,16 +16,13 @@ public class PlayerItemSlotTargettingController : MonoBehaviour
         
     }
 
-    public List<Vector3> slots = new List<Vector3>();
-
     // Find the closest ItemSlot to the player
     public ItemSlot FindClosest()
     {
+        List<Vector3> slots = new List<Vector3>();
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         ItemSlot slot = null;
-
-        slots.Clear();
-
 
         float minSqrDistance = Mathf.Infinity;
         for (int i = 0; i < colliders.Length; i++)
@@ -38,13 +35,13 @@ public class PlayerItemSlotTargettingController : MonoBehaviour
             { 
                 if (colliders[i].GetComponent<ItemSlot>() != null)
                 {
-                    ItemSlot s = colliders[i].GetComponent<ItemSlot>();
-                    if (s.hasItem)
-                        continue;
+                    //ItemSlot s = colliders[i].GetComponent<ItemSlot>();
+                    //if (s.hasItem)
+                        //continue;
 
-                    slot = s;
-                    minSqrDistance = sqrDistanceToCenter;
-                    slots.Add(colliders[i].transform.position);
+                    //slot = s;
+                    //minSqrDistance = sqrDistanceToCenter;
+                    //slots.Add(colliders[i].transform.position);
                 }
             }
         }
@@ -55,15 +52,5 @@ public class PlayerItemSlotTargettingController : MonoBehaviour
     public void TargetSlot(ItemSlot slot)
     {
         target=slot;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, radius);
-        foreach (Vector3 v in slots)
-        {
-            Gizmos.DrawCube(v, new Vector3(1, 1, 1));
-        }
-        
     }
 }
