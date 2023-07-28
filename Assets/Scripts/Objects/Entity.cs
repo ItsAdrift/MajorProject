@@ -30,7 +30,7 @@ public class Entity : MonoBehaviour
 
     private void Update()
     {
-        outline.enabled = targeted;
+        //outline.enabled = targeted;
     }
 
     public void SetTargeted(bool b)

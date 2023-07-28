@@ -35,13 +35,13 @@ public class PlayerItemSlotTargettingController : MonoBehaviour
             { 
                 if (colliders[i].GetComponent<ItemSlot>() != null)
                 {
-                    //ItemSlot s = colliders[i].GetComponent<ItemSlot>();
-                    //if (s.hasItem)
-                        //continue;
+                    ItemSlot s = colliders[i].GetComponent<ItemSlot>();
+                    if (s.hasItem)
+                        continue;
 
-                    //slot = s;
-                    //minSqrDistance = sqrDistanceToCenter;
-                    //slots.Add(colliders[i].transform.position);
+                    slot = s;
+                    minSqrDistance = sqrDistanceToCenter;
+                    slots.Add(colliders[i].transform.position);
                 }
             }
         }

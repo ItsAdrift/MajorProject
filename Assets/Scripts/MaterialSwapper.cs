@@ -20,13 +20,22 @@ public class MaterialSwapper : MonoBehaviour
 
     public void Set(int index)
     {
-        if (cIndex == index) return;
+        //if (cIndex == index) return;
 
-        cIndex = index;
+        //cIndex = index;
+
+        int changeMatFor = 2;
 
         foreach(MeshRenderer mr in renderers)
         {
-            mr.material = materials[index];
+            List<Material> l = new List<Material>();
+            for (int i = 0; i < changeMatFor; i++)
+            {
+                l.Add(materials[index]);
+            }
+
+            //mr.material = materials[index];
+            mr.SetMaterials(l);
         }
     }
 }

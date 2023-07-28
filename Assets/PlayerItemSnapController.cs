@@ -26,6 +26,23 @@ public class PlayerItemSnapController : MonoBehaviour
                 if (targettingController.target != null)
                 {
                     playerObjectController.heldItemCopy.transform.position = targettingController.target.transform.position;
+
+                    // Ensure that it is not in a position that another parcel is already in.
+                    /*Collider[] colliders = Physics.OverlapSphere(playerObjectController.heldItemCopy.transform.position, 1);
+
+                    foreach (Collider c in colliders)
+                    {
+                        if (GameObject.ReferenceEquals(c.gameObject, playerObjectController.heldItemCopy))
+                        {
+                            Debug.Log("Same");
+                            continue;
+                        }
+                        if (c.gameObject.activeSelf)
+                        {
+                            Debug.Log("Hit active parcel!");
+                        }
+                    }*/
+
                     playerObjectController.heldItemCopy.GetComponent<MaterialSwapper>().Set(1);
                     playerObjectController.heldItemCopy.SetActive(true);
                     playerObjectController.heldEntity.gameObject.SetActive(false);
