@@ -25,7 +25,6 @@ public class Entity : MonoBehaviour
     private void Update()
     {
         outline.SetState(targeted);
-        Debug.Log(targeted);
     }
 
     public void SetTargeted(bool b)

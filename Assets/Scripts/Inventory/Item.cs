@@ -6,4 +6,9 @@ public class Item : MonoBehaviour
 {
     public ItemType type;
     public int amount = 1;
+
+    public void _Reset()
+    {
+        type = null;
+    }
 }

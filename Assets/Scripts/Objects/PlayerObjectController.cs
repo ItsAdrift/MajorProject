@@ -123,8 +123,11 @@ public class PlayerObjectController : MonoBehaviour
                 heldItemCopy = building.CreateCopy(heldEntity, new Vector3(-90f, 0, 0)); // This causes a freeze
                 if (heldEntity.GetComponent<ItemEntity>().slot != null)
                 {
-                    heldEntity.GetComponent<ItemEntity>().slot.item = null;
+                    //heldEntity.GetComponent<ItemEntity>().slot.item = null;
                     heldEntity.GetComponent<ItemEntity>().slot.hasItem = false;
+
+                    heldEntity.GetComponent<ItemEntity>().slot.gameObject.GetComponent<Item>()?._Reset();
+                    heldEntity.GetComponent<ItemEntity>().slot.gameObject.GetComponent<ParcelGenerator>()?._Reset();
                 }
             }
             targetController.enabled = false;

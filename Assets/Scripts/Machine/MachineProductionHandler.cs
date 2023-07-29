@@ -50,6 +50,11 @@ public class MachineProductionHandler : MonoBehaviour
     private void FinishProduction()
     {
         machine.outputSlot.item.type = recipe.result;
+        foreach (ItemSlot slot in machine.itemSlots)
+        {
+            slot.hasItem = false;
+            slot.item = null;
+        }
         Destroy(this);
     }
 }

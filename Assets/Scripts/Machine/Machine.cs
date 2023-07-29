@@ -22,12 +22,6 @@ public class Machine : MonoBehaviour
             timer = GetComponent<MachineTimer>();
 
         timer.timerInterval.AddListener(Interval);
-
-        // Production Handler
-        if (!GetComponent<MachineProductionHandler>())
-            productionHandler = gameObject.AddComponent<MachineProductionHandler>();
-        else
-            productionHandler = GetComponent<MachineProductionHandler>();
     }
 
     // This logic runs every second
@@ -35,8 +29,9 @@ public class Machine : MonoBehaviour
     {
         if (HasRequiredItemsForRecipe(GetSelectedRecipe()))
         {
-            // Start Production
-            Debug.Log("Start Production");
+            // Create & Assign a new production handler
+            productionHandler = gameObject.AddComponent<MachineProductionHandler>();
+
             productionHandler.StartProduction(this, timer, GetSelectedRecipe());
         }   
     }
