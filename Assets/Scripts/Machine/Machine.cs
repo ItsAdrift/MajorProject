@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Machine : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Machine : MonoBehaviour
     [SerializeField] public ItemSlot[] itemSlots;
 
     [SerializeField] public ItemSlot outputSlot;
+
+    [SerializeField] public Slider slider;
 
     private MachineTimer timer;
     private MachineProductionHandler productionHandler;

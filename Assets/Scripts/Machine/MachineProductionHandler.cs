@@ -8,8 +8,8 @@ public class MachineProductionHandler : MonoBehaviour
     Machine machine;
     MachineRecipe recipe;
 
-    int count = 0;
-    int time = 0;
+    float count = 0;
+    float time = 0;
 
     public void StartProduction(Machine machine, MachineTimer timer, MachineRecipe recipe)
     {
@@ -45,6 +45,8 @@ public class MachineProductionHandler : MonoBehaviour
         {
             FinishProduction();
         }
+
+        MoveSlider();
     }
 
     private void FinishProduction()
@@ -55,6 +57,13 @@ public class MachineProductionHandler : MonoBehaviour
             slot.hasItem = false;
             slot.item = null;
         }
+        
         Destroy(this);
     }
+
+    private void MoveSlider()
+    {
+        machine.slider.value = count / time;
+    }
+
 }

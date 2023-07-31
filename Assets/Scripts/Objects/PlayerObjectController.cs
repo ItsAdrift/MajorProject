@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerObjectController : MonoBehaviour
 {
@@ -111,11 +112,6 @@ public class PlayerObjectController : MonoBehaviour
 
             Transform t = heldEntity.gameObject.GetComponent<ItemEntity>() != null ? itemHold.transform : objectHold.transform;
 
-            o.transform.SetParent(t);
-
-
-            o.transform.localPosition = Vector3.zero;
-            o.transform.localRotation = Quaternion.Euler(Vector3.zero);
             if (heldEntity.placeable)
                 building.HandleEntity(heldEntity);
             else if (heldEntity.IsItem())
@@ -128,8 +124,22 @@ public class PlayerObjectController : MonoBehaviour
 
                     heldEntity.GetComponent<ItemEntity>().slot.gameObject.GetComponent<Item>()?._Reset();
                     heldEntity.GetComponent<ItemEntity>().slot.gameObject.GetComponent<ParcelGenerator>()?._Reset();
+
+                    if (heldEntity.transform.parent != null && heldEntity.transform.parent.parent != null)
+                    {
+                        Slider s = heldEntity.GetComponent<ItemEntity>().transform.parent.parent.GetComponentInChildren<Slider>();
+                        if (s != null)
+                        {
+                            s.value = 0f;
+                        }
+                    }  
                 }
             }
+            o.transform.SetParent(t);
+
+            o.transform.localPosition = Vector3.zero;
+            o.transform.localRotation = Quaternion.Euler(Vector3.zero);
+
             targetController.enabled = false;
         }
     }
