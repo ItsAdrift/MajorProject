@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [HideInInspector] public static GameManager Instance;   
+
     public Pallet pallet;
 
     public ItemType[] startingDelivery;
 
+    [Header("Scripts")]
+    [SerializeField] Money money;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -24,4 +29,10 @@ public class GameManager : MonoBehaviour
     {
         pallet.AddItemTypes(startingDelivery);
     }
+
+    public void ModifyFunds(int amount)
+    {
+        money.money += amount;
+    }
+
 }

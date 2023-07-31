@@ -24,4 +24,10 @@ public class ItemSlot : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawCube(transform.position, new Vector3(0.9f,0.9f,0.9f));
     }
+
+    public void ClearItem()
+    {
+        item = null;
+        hasItem = false;
+    }
 }

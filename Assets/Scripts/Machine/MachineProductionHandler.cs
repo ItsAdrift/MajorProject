@@ -36,6 +36,8 @@ public class MachineProductionHandler : MonoBehaviour
                 }
             }
         }
+
+        machine.slider.value = 0.025f;
     }
 
     void Interval()

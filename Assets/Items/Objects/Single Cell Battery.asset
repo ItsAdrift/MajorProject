@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Single Cell Battery
   m_EditorClassIdentifier: 
   id: single_cell_battery
+  name: Single Cell Battery
   render: {fileID: 21300000, guid: 7bb2648289cec2845a50eebb68708f03, type: 3}
+  sellPrice: 0

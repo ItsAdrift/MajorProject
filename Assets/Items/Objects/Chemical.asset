@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Chemical
   m_EditorClassIdentifier: 
   id: chemical
+  name: Chemical
   render: {fileID: 21300000, guid: 4d2a023e430810b47879499a370c5356, type: 3}
+  sellPrice: 0

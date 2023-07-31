@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Metal
   m_EditorClassIdentifier: 
   id: metal
+  name: Metal
   render: {fileID: 21300000, guid: a0d476687e3c4694f841d9825a17ad29, type: 3}
+  sellPrice: 0
