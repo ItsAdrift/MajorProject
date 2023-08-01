@@ -65,4 +65,9 @@ public class PlayerController : MonoBehaviour
             precision = false;
         }
     }
+
+    public void DebugMSG(string msg)
+    {
+        Debug.Log(msg);
+    }
 }
