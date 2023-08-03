@@ -6,12 +6,15 @@ using UnityEngine;
 public class GoalManager : MonoBehaviour
 {
     public ProductionGoal[] goals;
+    
+    public Dictionary<ProductionGoal, GoalProgress> progress = new Dictionary<ProductionGoal, GoalProgress>();
 
     private void Start()
     {
         foreach(ProductionGoal goal in goals)
         {
-            goal.progress = new GoalProgress();
+            Debug.Log("Added progress tracker for goal: " + goal.name);
+            progress.Add(goal, new GoalProgress());
         }
     }
 
@@ -23,7 +26,8 @@ public class GoalManager : MonoBehaviour
         {
             if (goal.type == type)
             {
-                goal.progress.produced++;
+                GoalProgress gp = progress.GetValueOrDefault(goal);
+                gp.produced++;
                 CheckGoalCompletion(goal);
             }
         }
@@ -36,7 +40,8 @@ public class GoalManager : MonoBehaviour
         {
             if (goal.type == type)
             {
-                goal.progress.exported++;
+                GoalProgress gp = progress.GetValueOrDefault(goal);
+                gp.exported++;
                 CheckGoalCompletion(goal);
             }
         }
@@ -44,7 +49,13 @@ public class GoalManager : MonoBehaviour
 
     public void CheckGoalCompletion(ProductionGoal goal)
     {
-        if (goal.progress.produced >= goal.amountProduced && goal.progress.exported >= goal.amountExported)
+        GoalProgress gp = progress.GetValueOrDefault(goal);
+        if (gp == null)
+        {
+            Debug.Log("Goal is null");
+            return;
+        }
+        if (gp.produced >= goal.amountProduced && gp.exported >= goal.amountExported)
         {
             // Goal is completed
             Debug.Log("Goal: " + goal.name + " completed, unlocking: " + goal.unlock.name);
@@ -54,6 +65,6 @@ public class GoalManager : MonoBehaviour
 
     public void Unlock(ProductionUnlock unlock)
     {
-
+        GameManager.Instance.unlockedItems.AddRange(unlock.unlock);
     }
 }

@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 018240ff3c56b8f469ab3b05ab7a0e5c, type: 3}
-  m_Name: BatteryGoal
+  m_Script: {fileID: 11500000, guid: 6a71d14a5c711f64595f9d144bb8672e, type: 3}
+  m_Name: Electrical Component
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 219a3ae1e4549f3418057a34941eadf5, type: 2}
-  amountProduced: 4
-  amountExported: 2
-  unlock: {fileID: 11400000, guid: 69546bb19799a3042a5a1b85772bc15c, type: 2}
+  type: {fileID: 11400000, guid: eff6da2e262db2d44a3d17fb450d42cf, type: 2}
+  amount: 1

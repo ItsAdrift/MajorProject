@@ -30,13 +30,17 @@ public class Machine : MonoBehaviour
     // This logic runs every second
     public void Interval()
     {
-        if (HasRequiredItemsForRecipe(GetSelectedRecipe()))
+        foreach (MachineRecipe r in type.recipes)
         {
-            // Create & Assign a new production handler
-            productionHandler = gameObject.AddComponent<MachineProductionHandler>();
+            if (HasRequiredItemsForRecipe(r))
+            {
+                // Create & Assign a new production handler
+                productionHandler = gameObject.AddComponent<MachineProductionHandler>();
 
-            productionHandler.StartProduction(this, timer, GetSelectedRecipe());
-        }   
+                productionHandler.StartProduction(this, timer, GetSelectedRecipe());
+            }
+        }
+           
     }
 
     /*
@@ -52,9 +56,41 @@ public class Machine : MonoBehaviour
     {
         if (recipe == null) return false;
 
+        List<KeyValuePair<ItemType, bool>> ingredients = new List<KeyValuePair<ItemType, bool>>();
+        foreach (RecipeIngredient ri in recipe.ingredients)
+        {
+            ingredients.Add(new KeyValuePair<ItemType, bool>(ri.type, false));
+        }
+
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            if (itemSlots[i].item == null) continue;
+            if (itemSlots[i].item.type == null) continue;
+
+            ItemType type = itemSlots[i].item.type;
+
+            for (int ingredientsIndex = 0; ingredientsIndex < ingredients.Count; ingredientsIndex++)
+            {
+                if (!ingredients[ingredientsIndex].Value) // Item is not present
+                {
+                    if (ingredients[ingredientsIndex].Key.id == type.id)
+                        ingredients.Insert(ingredientsIndex, new KeyValuePair<ItemType, bool>(type, true));
+                }
+            }
+        }
+
+        bool hasRequired = false;
         int count = 0;
 
-        for (int i = 0; i < recipe.ingredients.Length; i++) { 
+        foreach(KeyValuePair<ItemType, bool> kvp in ingredients)
+        {
+            if (kvp.Value)
+                count++;
+        }
+        hasRequired = count >= ingredients.Count;
+        return hasRequired;
+
+        /*for (int i = 0; i < recipe.ingredients.Length; i++) { 
             if (recipe.ingredients[i] == null) continue;
             if (recipe.ingredients[i].type == null) continue;
 
@@ -73,7 +109,7 @@ public class Machine : MonoBehaviour
                 count++;
         }
 
-        return (count >= recipe.ingredients.Length);
+        return (count >= recipe.ingredients.Length);*/
     }
 
 }

@@ -45,8 +45,10 @@ public class OrderManager : MonoBehaviour
         activeOrders.Add(order);
     }
 
-    public void ItemExported(ItemSlot slot, ItemType item)
+    public bool ItemExported(ItemSlot slot, ItemType item)
     {
+        bool success = false;
+
         Order toRemove = null;
         foreach (Order order in activeOrders)
         {
@@ -69,7 +71,7 @@ public class OrderManager : MonoBehaviour
                 gameManager.ModifyFunds(item.sellPrice);
 
                 Debug.Log("Order Completed");
-
+                success = true;
                 break;
             }
         }
@@ -77,5 +79,6 @@ public class OrderManager : MonoBehaviour
         if (toRemove != null)
             activeOrders.Remove(toRemove);
 
+        return success;
     }
 }

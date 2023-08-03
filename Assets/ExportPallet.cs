@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ExportPallet : Pallet
@@ -18,7 +19,11 @@ public class ExportPallet : Pallet
         {
             if (slot.hasItem)
             {
-                OrderManager.Instance.ItemExported(slot, slot.item.type);
+                ItemType type = slot.item.type;
+                if (OrderManager.Instance.ItemExported(slot, slot.item.type))
+                {
+                    GameManager.Instance.goalManager.ItemExported(type);
+                }
             }
         }
     }

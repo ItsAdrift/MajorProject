@@ -12,8 +12,6 @@ public class ProductionGoal : ScriptableObject
 
     [Header("Reward/Unlock")]
     public ProductionUnlock unlock;
-
-    [Header("Runtime")]
-    [ReadOnly] public GoalProgress progress;
+    
     
 }
