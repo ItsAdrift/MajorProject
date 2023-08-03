@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf8ff662e1b4f34da8934feba1eb82f, type: 3}
+  m_Name: WorkbenchMachine
+  m_EditorClassIdentifier: 
+  name: Workbench
+  id: workbench
+  description: Create more complicated components
+  recipes:
+  - {fileID: 11400000, guid: b6a19edf8ae260a48897ebe548d6bba4, type: 2}
+  - {fileID: 11400000, guid: c0d3957082908004e9ed5e57878da317, type: 2}
+  - {fileID: 11400000, guid: 150c5f105bf5f76428368bc30cf40637, type: 2}

@@ -32,12 +32,14 @@ public class Machine : MonoBehaviour
     {
         foreach (MachineRecipe r in type.recipes)
         {
+          
             if (HasRequiredItemsForRecipe(r))
             {
+               
                 // Create & Assign a new production handler
                 productionHandler = gameObject.AddComponent<MachineProductionHandler>();
 
-                productionHandler.StartProduction(this, timer, GetSelectedRecipe());
+                productionHandler.StartProduction(this, timer, r); // This was causing an issue where only the first recipe was being produced. `r` was previously left as GetSelectedRecipe(); meaning it would never start producing the correct component
             }
         }
            
@@ -68,13 +70,23 @@ public class Machine : MonoBehaviour
             if (itemSlots[i].item.type == null) continue;
 
             ItemType type = itemSlots[i].item.type;
+            bool ingredientFound = false;
 
             for (int ingredientsIndex = 0; ingredientsIndex < ingredients.Count; ingredientsIndex++)
             {
-                if (!ingredients[ingredientsIndex].Value) // Item is not present
+                if (!ingredients[ingredientsIndex].Value && ingredients[ingredientsIndex].Key.id == type.id)
+                {
+                    ingredientFound = true;
+                    break;
+                }
+            }
+
+            if (ingredientFound)
+            {
+                for (int ingredientsIndex = 0; ingredientsIndex < ingredients.Count; ingredientsIndex++)
                 {
                     if (ingredients[ingredientsIndex].Key.id == type.id)
-                        ingredients.Insert(ingredientsIndex, new KeyValuePair<ItemType, bool>(type, true));
+                        ingredients[ingredientsIndex] = new KeyValuePair<ItemType, bool>(type, true);
                 }
             }
         }
