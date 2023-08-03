@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3ebefd6a1d728c41876f3649e5d55e9, type: 3}
-  m_Name: Single Cell Battery
+  m_Name: Double Cell Battery 1
   m_EditorClassIdentifier: 
-  id: single_cell_battery
-  name: Single Cell Battery
+  id: double_cell_battery
+  name: Double Cell Battery
   render: {fileID: 21300000, guid: 7bb2648289cec2845a50eebb68708f03, type: 3}
-  sellPrice: 10
+  sellPrice: 22

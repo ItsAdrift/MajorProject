@@ -7479,6 +7479,7 @@ GameObject:
   - component: {fileID: 1122635216}
   - component: {fileID: 1122635215}
   - component: {fileID: 1122635217}
+  - component: {fileID: 1122635218}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7520,6 +7521,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1dd6157da732cf5488840f4bbd6b7309, type: 2}
   - {fileID: 11400000, guid: 1dd6157da732cf5488840f4bbd6b7309, type: 2}
   money: {fileID: 1122635216}
+  goalManager: {fileID: 1122635218}
 --- !u!114 &1122635215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7567,7 +7569,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: afe48de2ee9b32c4484182391998e9c3, type: 2}
   - {fileID: 11400000, guid: 1dd6157da732cf5488840f4bbd6b7309, type: 2}
   - {fileID: 11400000, guid: 219a3ae1e4549f3418057a34941eadf5, type: 2}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1122635214}
+--- !u!114 &1122635218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122635212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beaa1b071577abf4ea6440daa17ed396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goals:
+  - {fileID: 11400000, guid: b323a7699fabb5b448d10c13ab946efc, type: 2}
+  - {fileID: 11400000, guid: f2de280108aa5bf4e8d728eb5fb90b32, type: 2}
+  - {fileID: 11400000, guid: da766d9ca27984a4b847614217882df2, type: 2}
 --- !u!1 &1128374560
 GameObject:
   m_ObjectHideFlags: 0

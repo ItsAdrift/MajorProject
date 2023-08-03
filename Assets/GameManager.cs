@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Scripts")]
     [SerializeField] Money money;
+    [SerializeField] public GoalManager goalManager;
 
     // Start is called before the first frame update
     void Awake()

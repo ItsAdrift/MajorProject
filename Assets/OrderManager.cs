@@ -66,7 +66,7 @@ public class OrderManager : MonoBehaviour
                  * Handle order completion rewards here
                  */
 
-                gameManager.ModifyFunds(10); // Temporary
+                gameManager.ModifyFunds(item.sellPrice);
 
                 Debug.Log("Order Completed");
 

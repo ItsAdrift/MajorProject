@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018240ff3c56b8f469ab3b05ab7a0e5c, type: 3}
+  m_Name: DoubleBatteryGoal
+  m_EditorClassIdentifier: 
+  type: {fileID: 11400000, guid: ca0a05899a1fd7240aaf4ffc0944fd21, type: 2}
+  amountProduced: 4
+  amountExported: 4
+  unlock: {fileID: 11400000, guid: 86c36baeae964024a9447e28b06cb8ae, type: 2}
+  produced: 0
+  exported: 0

@@ -60,6 +60,9 @@ public class MachineProductionHandler : MonoBehaviour
             slot.item = null;
         }
         
+        GameManager.Instance.goalManager.ItemProduced(recipe.result);
+
+
         Destroy(this);
     }
 

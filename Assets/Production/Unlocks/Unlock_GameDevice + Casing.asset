@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ebefd6a1d728c41876f3649e5d55e9, type: 3}
-  m_Name: Single Cell Battery
+  m_Script: {fileID: 11500000, guid: 28f1a29cbba13334fa379985bf35ebbb, type: 3}
+  m_Name: Unlock_GameDevice + Casing
   m_EditorClassIdentifier: 
-  id: single_cell_battery
-  name: Single Cell Battery
-  render: {fileID: 21300000, guid: 7bb2648289cec2845a50eebb68708f03, type: 3}
-  sellPrice: 10
+  unlock:
+  - {fileID: 11400000, guid: f3f470215856f4547bac68b45d387a59, type: 2}
+  - {fileID: 11400000, guid: afe48de2ee9b32c4484182391998e9c3, type: 2}
