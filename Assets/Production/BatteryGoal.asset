@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BatteryGoal
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 219a3ae1e4549f3418057a34941eadf5, type: 2}
-  amountProduced: 4
-  amountExported: 2
+  amountProduced: 1
+  amountExported: 1
   unlock: {fileID: 11400000, guid: 69546bb19799a3042a5a1b85772bc15c, type: 2}

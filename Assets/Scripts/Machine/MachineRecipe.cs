@@ -12,4 +12,13 @@ public class MachineRecipe : ScriptableObject
     public RecipeIngredient[] ingredients;
 
     public ItemType result;
+
+    public enum Machine
+    {
+        Fabrication_Machine,
+        Workbench,
+        Assembly_Machine
+    }
+
+    public Machine producedIn;
 }

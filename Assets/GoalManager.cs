@@ -66,5 +66,10 @@ public class GoalManager : MonoBehaviour
     public void Unlock(ProductionUnlock unlock)
     {
         GameManager.Instance.unlockedItems.AddRange(unlock.unlock);
+        foreach (MachineRecipe r in unlock.recipeUnlock)
+        {
+            GameManager.Instance.recipeUnlockManager.AddRecipeToQueue(r);
+        }
+        
     }
 }

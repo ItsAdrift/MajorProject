@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Casing
   id: casing
-  processsingTime: 5
+  processsingTime: 2
   ingredients:
   - {fileID: 11400000, guid: f76081b13938aaa42a75b4dcf92120e5, type: 2}
   result: {fileID: 11400000, guid: f3f470215856f4547bac68b45d387a59, type: 2}
+  producedIn: 1

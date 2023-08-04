@@ -121,6 +121,7 @@ public class PlayerObjectController : MonoBehaviour
                 {
                     //heldEntity.GetComponent<ItemEntity>().slot.item = null;
                     heldEntity.GetComponent<ItemEntity>().slot.hasItem = false;
+                    heldEntity.GetComponent<ItemEntity>().slot.item = null;
 
                     heldEntity.GetComponent<ItemEntity>().slot.gameObject.GetComponent<Item>()?._Reset();
                     heldEntity.GetComponent<ItemEntity>().slot.gameObject.GetComponent<ParcelGenerator>()?._Reset();

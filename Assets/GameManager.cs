@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] Money money;
     [SerializeField] public GoalManager goalManager;
+    [SerializeField] public RecipeUnlockManager recipeUnlockManager;
 
     
 

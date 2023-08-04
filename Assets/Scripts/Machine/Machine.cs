@@ -85,8 +85,12 @@ public class Machine : MonoBehaviour
             {
                 for (int ingredientsIndex = 0; ingredientsIndex < ingredients.Count; ingredientsIndex++)
                 {
-                    if (ingredients[ingredientsIndex].Key.id == type.id)
+                    if (ingredients[ingredientsIndex].Key.id == type.id && !ingredients[ingredientsIndex].Value)
+                    {
                         ingredients[ingredientsIndex] = new KeyValuePair<ItemType, bool>(type, true);
+                        break;
+                    }
+                        
                 }
             }
         }

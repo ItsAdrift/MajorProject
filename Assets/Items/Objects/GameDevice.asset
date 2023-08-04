@@ -15,4 +15,4 @@ MonoBehaviour:
   id: gameDevice
   name: Gaming Device
   render: {fileID: 21300000, guid: 07252c1e84cd3434ca019bae58c704e3, type: 3}
-  sellPrice: 0
+  sellPrice: 100

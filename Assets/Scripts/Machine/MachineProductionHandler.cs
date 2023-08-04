@@ -26,6 +26,9 @@ public class MachineProductionHandler : MonoBehaviour
         {
             foreach (ItemSlot slot in machine.itemSlots)
             {
+                if (slot.item == null) continue;
+                if (slot.item.type == null) continue;
+
                 if (slot.item.type == ingredient.type)
                 {
                     slot.item.amount -= ingredient.amount;
@@ -53,6 +56,10 @@ public class MachineProductionHandler : MonoBehaviour
 
     private void FinishProduction()
     {
+        if (machine.outputSlot.item == null)
+        {
+            machine.outputSlot.item = machine.outputSlot.gameObject.GetComponent<Item>();
+        }
         machine.outputSlot.item.type = recipe.result;
         foreach (ItemSlot slot in machine.itemSlots)
         {

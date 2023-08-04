@@ -6,4 +6,5 @@ using UnityEngine;
 public class ProductionUnlock : ScriptableObject
 {
     public ItemType[] unlock;
+    public MachineRecipe[] recipeUnlock;
 }

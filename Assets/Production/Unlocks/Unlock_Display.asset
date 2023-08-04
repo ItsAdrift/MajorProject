@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlock:
   - {fileID: 11400000, guid: b8ef27b9afeddda419458a0f9f54fbbd, type: 2}
+  recipeUnlock:
+  - {fileID: 11400000, guid: c0d3957082908004e9ed5e57878da317, type: 2}
