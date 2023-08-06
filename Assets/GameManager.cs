@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public static GameManager Instance;
 
     [Header("Game Start")]
+    public bool managePallet = false;
     public Pallet pallet;
     public ItemType[] startingDelivery;
 
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Money money;
     [SerializeField] public GoalManager goalManager;
     [SerializeField] public RecipeUnlockManager recipeUnlockManager;
+    [SerializeField] public OrderManager orderManager;
+    [SerializeField] public PalletManager palletManager;
 
     
 
@@ -51,6 +54,16 @@ public class GameManager : MonoBehaviour
     public void ModifyFunds(int amount)
     {
         money.money += amount;
+    }
+
+    public bool SubtractFunds(int amount)
+    {
+        if (money.money >= amount)
+        {
+            money.money -= amount;
+            return true;
+        }
+        return false;
     }
 
     public void PlayerJoined()

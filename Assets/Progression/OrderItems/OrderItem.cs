@@ -6,7 +6,7 @@ using UnityEngine;
 public class OrderItem : ScriptableObject
 {
     public ItemType type;
-    [Range(1, 60)]
+    [Range(1, 120)]
     public int min;
 
     [Range(1, 120)]

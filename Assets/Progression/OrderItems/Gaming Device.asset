@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Gaming Device
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: afe48de2ee9b32c4484182391998e9c3, type: 2}
-  min: 40
-  max: 61
+  min: 120
+  max: 120

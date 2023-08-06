@@ -9,8 +9,8 @@ public class Entity : MonoBehaviour
     public float rotation = 90f;
     public IPlacementHandler placementHandler;
 
-    private Outline outline;
-    private bool targeted = false;
+    protected Outline outline;
+    protected bool targeted = false;
 
     // Start is called before the first frame update
     void Awake()

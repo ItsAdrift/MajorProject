@@ -15,4 +15,4 @@ MonoBehaviour:
   id: electrical_component
   name: Electrical Component
   render: {fileID: 21300000, guid: 56011ac97f1683c48aca91eaa185075c, type: 3}
-  sellPrice: 10
+  sellPrice: 20

@@ -107,8 +107,15 @@ public class PlayerObjectController : MonoBehaviour
 
         if (targetController.targetedEntity != null)
         {
-            heldEntity = targetController.targetedEntity;
             GameObject o = targetController.targetedEntity.gameObject;
+            if (o.GetComponent<ButtonEntity>() != null)
+            {
+                o.GetComponent<ButtonEntity>().ButtonPress();
+                return;
+            }
+
+            heldEntity = targetController.targetedEntity;
+            
 
             Transform t = heldEntity.gameObject.GetComponent<ItemEntity>() != null ? itemHold.transform : objectHold.transform;
 

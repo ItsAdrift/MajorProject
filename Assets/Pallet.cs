@@ -11,7 +11,7 @@ public class Pallet : MonoBehaviour
         int slot = 0;
         foreach (ItemType type in types)
         {
-            GameObject parcel = Instantiate(Constants.Get().parcel);
+            GameObject parcel = Instantiate(Constants.Get().parcel, slots[slot].transform);
             parcel.transform.position = slots[slot].transform.position;
 
             Item item = parcel.GetComponent<Item>();
@@ -20,5 +20,29 @@ public class Pallet : MonoBehaviour
 
             slot++;
         }
+    }
+     
+    public void ClearPallet()
+    {
+        foreach (ItemSlot slot in slots)
+        {
+            if (slot.transform.childCount > 0)
+                Destroy(slot.transform.GetChild(0).gameObject);
+        }
+    }
+
+    
+
+    public int GetEmptySlots()
+    {
+        int count = 0;
+
+        foreach (ItemSlot slot in slots)
+        {
+            if (slot.transform.childCount == 0)
+                count++;
+        }
+
+        return count;
     }
 }

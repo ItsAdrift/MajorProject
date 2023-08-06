@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Electrical Component
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: eff6da2e262db2d44a3d17fb450d42cf, type: 2}
-  min: 15
-  max: 25
+  min: 35
+  max: 50

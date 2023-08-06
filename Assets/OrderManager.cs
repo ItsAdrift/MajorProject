@@ -20,8 +20,7 @@ public class OrderManager : MonoBehaviour
     [Header("Events")]
     public UnityEvent<ItemType> OnOrderCompleted;
 
-    // Private
-    List<Order> activeOrders = new List<Order>();
+    public List<Order> activeOrders = new List<Order>();
 
     public GameManager gameManager;
 

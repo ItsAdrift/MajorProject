@@ -7,6 +7,7 @@ TagManager:
   - Placeable
   - Object
   - ItemSlot
+  - RestockButton
   layers:
   - Default
   - TransparentFX

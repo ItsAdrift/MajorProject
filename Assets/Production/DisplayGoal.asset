@@ -15,4 +15,4 @@ MonoBehaviour:
   type: {fileID: 11400000, guid: b8ef27b9afeddda419458a0f9f54fbbd, type: 2}
   amountProduced: 1
   amountExported: 1
-  unlock: {fileID: 11400000, guid: ab1607f90be01ae478cb983881d801cb, type: 2}
+  unlock: {fileID: 11400000, guid: 2792545c649faee4daecad28d7bd81a6, type: 2}

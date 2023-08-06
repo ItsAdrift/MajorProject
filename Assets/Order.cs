@@ -45,12 +45,13 @@ public class Order : MonoBehaviour
         // Increment the timer
         timer += Time.deltaTime;
 
-        slider.value = timer / time;
+        slider.value = 1 - (timer / time);
 
         // Check if the timer has exceeded the interval
         if (timer >= time)
         {
-            // Time is up!
+            GameManager.Instance.orderManager.activeOrders.Remove(this);
+            Destroy(this.gameObject);
         }
     }
 }

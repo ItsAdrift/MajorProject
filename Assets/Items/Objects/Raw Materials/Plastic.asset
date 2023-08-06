@@ -15,4 +15,4 @@ MonoBehaviour:
   id: plastic
   name: Plastic
   render: {fileID: 21300000, guid: 370f615dca0fd794b9e92321da332fc9, type: 3}
-  sellPrice: 5
+  sellPrice: 3

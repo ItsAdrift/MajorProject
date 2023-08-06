@@ -15,4 +15,4 @@ MonoBehaviour:
   id: casing
   name: Casing
   render: {fileID: 21300000, guid: 0faa081c95454264cb9c8e8dc4d33e9b, type: 3}
-  sellPrice: 5
+  sellPrice: 10

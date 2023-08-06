@@ -15,4 +15,4 @@ MonoBehaviour:
   id: double_cell_battery
   name: Double Cell Battery
   render: {fileID: 21300000, guid: ac84b01f74042e14e9a32ea103670233, type: 3}
-  sellPrice: 22
+  sellPrice: 25

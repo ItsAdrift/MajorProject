@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28f1a29cbba13334fa379985bf35ebbb, type: 3}
-  m_Name: Unlock_GameDevice + Casing
+  m_Name: Unlock_Casing
   m_EditorClassIdentifier: 
   unlock:
   - {fileID: 11400000, guid: f3f470215856f4547bac68b45d387a59, type: 2}
-  - {fileID: 11400000, guid: afe48de2ee9b32c4484182391998e9c3, type: 2}
   recipeUnlock:
   - {fileID: 11400000, guid: 150c5f105bf5f76428368bc30cf40637, type: 2}
-  - {fileID: 11400000, guid: 13fb28a57caea1f40ad224f6131a6b8b, type: 2}

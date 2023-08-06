@@ -15,4 +15,4 @@ MonoBehaviour:
   id: wire
   name: Wire
   render: {fileID: 21300000, guid: 74399be40a0f2694daa669be73f5868c, type: 3}
-  sellPrice: 5
+  sellPrice: 3

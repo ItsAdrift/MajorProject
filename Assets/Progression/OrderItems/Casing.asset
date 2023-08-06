@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Casing
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: f3f470215856f4547bac68b45d387a59, type: 2}
-  min: 15
-  max: 25
+  min: 40
+  max: 60
