@@ -12,6 +12,9 @@ public class ProgressionManager : MonoBehaviour
     public MachineRecipe firstRecipe;
     public ProgressionStage[] stages;
 
+    [Header("Post-Tutorial")]
+    public OrderItem[] orderItems;
+
     OrderManager orderManager;
     RecipeUnlockManager recipeUnlockManager;
     
@@ -26,6 +29,11 @@ public class ProgressionManager : MonoBehaviour
 
     public void OrderCompleted(ItemType type)
     {
+        if (type == stages[4].nextOrder) // Game Device completed
+        {
+            // Tutorial Over, start generating random (& timed) order
+            return;
+        }
         foreach (ProgressionStage stage in stages)
         {
             if (stage.completedOrder == type)
@@ -33,6 +41,12 @@ public class ProgressionManager : MonoBehaviour
                 orderManager.CreateOrder(stage.nextOrder.id);
             }
         }
+    }
+
+    public void CreateRandomOrder()
+    {
+        OrderItem item = orderItems[Random.Range(0, orderItems.Length)];
+        orderManager.CreateOrder(item.type.id, Random.Range(item.min, item.max+1));
     }
 
 }

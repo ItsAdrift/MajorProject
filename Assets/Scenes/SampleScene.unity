@@ -5568,33 +5568,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 643691498}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1122635219}
-        m_TargetAssemblyTypeName: RecipeUnlockManager, Assembly-CSharp
-        m_MethodName: AddRecipeToQueue
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 150c5f105bf5f76428368bc30cf40637,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: MachineRecipe, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: game_device
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1122635219}
-        m_TargetAssemblyTypeName: RecipeUnlockManager, Assembly-CSharp
-        m_MethodName: AddRecipeToQueue
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 13fb28a57caea1f40ad224f6131a6b8b,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: MachineRecipe, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &643691498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9602,6 +9576,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e3fbcf6aa107dd1448c5c7dfeba1553c, type: 2}
   - {fileID: 11400000, guid: 482ce2cd4bb8862409a24390e3c96899, type: 2}
   - {fileID: 11400000, guid: b21d9080a655eb44c952a7e8ac8e55e7, type: 2}
+  orderItems:
+  - {fileID: 11400000, guid: 32fe22dc76d95bb418907efbb3c33bca, type: 2}
+  - {fileID: 11400000, guid: 2c8b48e588be10d4eb3483775fe72466, type: 2}
+  - {fileID: 11400000, guid: 280176ea2a774e5408e0bc9aea774f37, type: 2}
+  - {fileID: 11400000, guid: 436c3beea130b5f4b8bb020681656a48, type: 2}
+  - {fileID: 11400000, guid: 8d782f59e6a0296419109273207ca4be, type: 2}
+  - {fileID: 11400000, guid: 5eff9074d35c4284c830fd12a760ee8f, type: 2}
 --- !u!1 &1128374560
 GameObject:
   m_ObjectHideFlags: 0

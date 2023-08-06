@@ -18,10 +18,8 @@ public class RecipeUnlockManager : MonoBehaviour
 
     public void AddRecipeToQueue(MachineRecipe r)
     {
-        if (!hasDisplay) { 
-            queue.Add(r);
-            return;
-        }
+        queue.Add(r);
+        if (hasDisplay) return;
 
         Display();
         hasDisplay = true;

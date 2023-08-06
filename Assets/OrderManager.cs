@@ -49,6 +49,20 @@ public class OrderManager : MonoBehaviour
         activeOrders.Add(order);
     }
 
+    public void CreateOrder(string itemID, int time)
+    {
+        Order order = Instantiate(orderPrefab, orderParent).GetComponent<Order>();
+        foreach (ItemType item in items)
+        {
+            if (item.id == itemID)
+                order.type = item;
+        }
+
+        order.time = time;
+        order.hasTimer = true;
+        activeOrders.Add(order);
+    }
+
     public bool ItemExported(ItemSlot slot, ItemType item)
     {
         bool success = false;
