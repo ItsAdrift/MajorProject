@@ -9,16 +9,22 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerJoinManager : MonoBehaviour
 {
+    public static PlayerJoinManager Instance;
+
     [SerializeField] GameObject playerPrefab;
 
     [Header("UI")]
     public UIImageSwapper player1;
     public UIImageSwapper player2;
 
+    public Slider slider;
+
     [ReadOnly] List<GameObject> playerList = new List<GameObject>();
 
     private void Start()
     {
+        Instance = this;
+
         DontDestroyOnLoad(gameObject);
     }
 
