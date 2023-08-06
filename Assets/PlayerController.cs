@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,12 +20,21 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         Debug.Log("Awaken");
-        CameraControl.Instance.m_Targets.Add(transform);
 
         controller = GetComponent<CharacterController>();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void Update()
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex != 1)
+            return;
+
+        CameraControl.Instance.m_Targets.Add(transform);
+    }
+
+        void Update()
     {
         if (precision)
         {
