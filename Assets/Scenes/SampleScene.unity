@@ -5569,16 +5569,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1122635217}
-        m_TargetAssemblyTypeName: OrderManager, Assembly-CSharp
-        m_MethodName: CreateOrder
-        m_Mode: 5
+      - m_Target: {fileID: 1122635219}
+        m_TargetAssemblyTypeName: RecipeUnlockManager, Assembly-CSharp
+        m_MethodName: AddRecipeToQueue
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 150c5f105bf5f76428368bc30cf40637,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: MachineRecipe, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: game_device
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1122635219}
+        m_TargetAssemblyTypeName: RecipeUnlockManager, Assembly-CSharp
+        m_MethodName: AddRecipeToQueue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 13fb28a57caea1f40ad224f6131a6b8b,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: MachineRecipe, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &643691498
@@ -9422,6 +9436,7 @@ GameObject:
   - component: {fileID: 1122635217}
   - component: {fileID: 1122635218}
   - component: {fileID: 1122635219}
+  - component: {fileID: 1122635220}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9515,10 +9530,27 @@ MonoBehaviour:
   orderPrefab: {fileID: 6114914536873160379, guid: 77d2b5ac93491624f8cee7b70d1a4fdb,
     type: 3}
   items:
-  - {fileID: 11400000, guid: 7be39327f69f0e94597de0ac81ecce29, type: 2}
   - {fileID: 11400000, guid: afe48de2ee9b32c4484182391998e9c3, type: 2}
-  - {fileID: 11400000, guid: 1dd6157da732cf5488840f4bbd6b7309, type: 2}
   - {fileID: 11400000, guid: 219a3ae1e4549f3418057a34941eadf5, type: 2}
+  - {fileID: 11400000, guid: ca0a05899a1fd7240aaf4ffc0944fd21, type: 2}
+  - {fileID: 11400000, guid: b8ef27b9afeddda419458a0f9f54fbbd, type: 2}
+  - {fileID: 11400000, guid: f3f470215856f4547bac68b45d387a59, type: 2}
+  - {fileID: 11400000, guid: eff6da2e262db2d44a3d17fb450d42cf, type: 2}
+  OnOrderCompleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1122635220}
+        m_TargetAssemblyTypeName: ProgressionManager, Assembly-CSharp
+        m_MethodName: OrderCompleted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   gameManager: {fileID: 1122635214}
 --- !u!114 &1122635218
 MonoBehaviour:
@@ -9536,6 +9568,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b323a7699fabb5b448d10c13ab946efc, type: 2}
   - {fileID: 11400000, guid: f2de280108aa5bf4e8d728eb5fb90b32, type: 2}
   - {fileID: 11400000, guid: da766d9ca27984a4b847614217882df2, type: 2}
+  unlockedGoals: []
 --- !u!114 &1122635219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9549,6 +9582,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipeUnlockUI: {fileID: 6873751179672572812}
+--- !u!114 &1122635220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122635212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6e7aa76e9c2f34eaad700bd46b1c33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: Index 0 will be created on game start
+  firstRecipe: {fileID: 11400000, guid: 12483d68a51909e4085f2c56eaa02c4f, type: 2}
+  stages:
+  - {fileID: 11400000, guid: 41e822331f5c9bb47922468f0a735fb7, type: 2}
+  - {fileID: 11400000, guid: af418a6164e2f6d44b132f22408b797e, type: 2}
+  - {fileID: 11400000, guid: e3fbcf6aa107dd1448c5c7dfeba1553c, type: 2}
+  - {fileID: 11400000, guid: 482ce2cd4bb8862409a24390e3c96899, type: 2}
+  - {fileID: 11400000, guid: b21d9080a655eb44c952a7e8ac8e55e7, type: 2}
 --- !u!1 &1128374560
 GameObject:
   m_ObjectHideFlags: 0
@@ -16319,7 +16372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1810386038
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16335,9 +16388,9 @@ RectTransform:
   - {fileID: 329534491}
   m_Father: {fileID: 2103981449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 655.16003, y: -60}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1810386039

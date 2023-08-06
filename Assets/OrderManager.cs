@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OrderManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class OrderManager : MonoBehaviour
 
     [Header("Items")]
     [SerializeField] ItemType[] items;
+
+    [Header("Events")]
+    public UnityEvent<ItemType> OnOrderCompleted;
 
     // Private
     List<Order> activeOrders = new List<Order>();
@@ -72,6 +76,7 @@ public class OrderManager : MonoBehaviour
 
                 Debug.Log("Order Completed");
                 success = true;
+                OnOrderCompleted.Invoke(item);
                 break;
             }
         }

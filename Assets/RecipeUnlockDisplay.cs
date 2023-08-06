@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using System;
 
 public class RecipeUnlockDisplay : MonoBehaviour
 {
@@ -41,10 +42,20 @@ public class RecipeUnlockDisplay : MonoBehaviour
         int ingredientAmount = recipe.ingredients.Length -1;
         EnableIngredientContainer(ingredientAmount);
 
-        for (int i = 0; i < recipe.ingredients.Length; i++)
+
+        try
         {
-            ingredients[ingredientAmount][i].sprite = recipe.ingredients[i].type.render;
+            for (int i = 0; i < recipe.ingredients.Length; i++)
+            {
+                Debug.Log(ingredients[ingredientAmount][i].gameObject.name);
+
+                ingredients[ingredientAmount][i].sprite = recipe.ingredients[i].type.render;
+            }
+        } catch (ArgumentOutOfRangeException e)
+        {
+
         }
+        
 
         madeIn.text = "Made In: " + recipe.producedIn.ToString().Replace("_", " ");
     }

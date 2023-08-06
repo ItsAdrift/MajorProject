@@ -32,7 +32,9 @@ public class Machine : MonoBehaviour
     {
         foreach (MachineRecipe r in type.recipes)
         {
-          
+            if (!GameManager.Instance.unlockedItems.Contains(r.result))
+                continue;
+
             if (HasRequiredItemsForRecipe(r))
             {
                

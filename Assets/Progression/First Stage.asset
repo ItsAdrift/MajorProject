@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ebefd6a1d728c41876f3649e5d55e9, type: 3}
-  m_Name: Double Cell Battery 1
+  m_Script: {fileID: 11500000, guid: 19bf90b69645b8643adbe77fded1213b, type: 3}
+  m_Name: First Stage
   m_EditorClassIdentifier: 
-  id: double_cell_battery
-  name: Double Cell Battery
-  render: {fileID: 21300000, guid: ac84b01f74042e14e9a32ea103670233, type: 3}
-  sellPrice: 22
+  completedOrder: {fileID: 0}
+  nextOrder: {fileID: 11400000, guid: 219a3ae1e4549f3418057a34941eadf5, type: 2}

@@ -9,6 +9,8 @@ public class RecipeUnlockManager : MonoBehaviour
 
     private List<MachineRecipe> queue = new List<MachineRecipe>();
 
+    bool hasDisplay = false;
+
     private void Start()
     {
         display = recipeUnlockUI.GetComponent<RecipeUnlockDisplay>();
@@ -16,8 +18,13 @@ public class RecipeUnlockManager : MonoBehaviour
 
     public void AddRecipeToQueue(MachineRecipe r)
     {
-        queue.Add(r);
+        if (!hasDisplay) { 
+            queue.Add(r);
+            return;
+        }
+
         Display();
+        hasDisplay = true;
     }
 
     public void Display()
@@ -38,6 +45,7 @@ public class RecipeUnlockManager : MonoBehaviour
         } else
         {
             recipeUnlockUI.SetActive(false);
+            hasDisplay = false;
         }
     }
 }

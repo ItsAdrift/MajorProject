@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: DisplayGoal
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: b8ef27b9afeddda419458a0f9f54fbbd, type: 2}
-  amountProduced: 5
-  amountExported: 4
+  amountProduced: 1
+  amountExported: 1
   unlock: {fileID: 11400000, guid: ab1607f90be01ae478cb983881d801cb, type: 2}
-  produced: 0
-  exported: 0

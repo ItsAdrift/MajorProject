@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: DoubleBatteryGoal
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: ca0a05899a1fd7240aaf4ffc0944fd21, type: 2}
-  amountProduced: 4
-  amountExported: 4
+  amountProduced: 1
+  amountExported: 1
   unlock: {fileID: 11400000, guid: 86c36baeae964024a9447e28b06cb8ae, type: 2}
-  produced: 0
-  exported: 0

@@ -9,6 +9,8 @@ public class GoalManager : MonoBehaviour
     
     public Dictionary<ProductionGoal, GoalProgress> progress = new Dictionary<ProductionGoal, GoalProgress>();
 
+    public List<ProductionGoal> unlockedGoals = new List<ProductionGoal>();
+
     private void Start()
     {
         foreach(ProductionGoal goal in goals)
@@ -49,6 +51,9 @@ public class GoalManager : MonoBehaviour
 
     public void CheckGoalCompletion(ProductionGoal goal)
     {
+        if (unlockedGoals.Contains(goal))
+            return;
+
         GoalProgress gp = progress.GetValueOrDefault(goal);
         if (gp == null)
         {
@@ -60,6 +65,7 @@ public class GoalManager : MonoBehaviour
             // Goal is completed
             Debug.Log("Goal: " + goal.name + " completed, unlocking: " + goal.unlock.name);
             Unlock(goal.unlock);
+            unlockedGoals.Add(goal);
         }
     }
 
@@ -69,6 +75,7 @@ public class GoalManager : MonoBehaviour
         foreach (MachineRecipe r in unlock.recipeUnlock)
         {
             GameManager.Instance.recipeUnlockManager.AddRecipeToQueue(r);
+            Debug.Log("Adding recipe: " + r.id + " to queue");
         }
         
     }

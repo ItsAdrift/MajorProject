@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: wire
   name: Wire
-  render: {fileID: 21300000, guid: 805c38872786380419d3bcfd59858085, type: 3}
+  render: {fileID: 21300000, guid: 74399be40a0f2694daa669be73f5868c, type: 3}
   sellPrice: 5

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: plastic
   name: Plastic
-  render: {fileID: 21300000, guid: 59f51945f2ddeb44fba1109e4f6cbe5f, type: 3}
+  render: {fileID: 21300000, guid: 370f615dca0fd794b9e92321da332fc9, type: 3}
   sellPrice: 5
