@@ -9,13 +9,11 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerJoinManager : MonoBehaviour
 {
-    [SerializeField] Transform secondaryPosition;
-
     [SerializeField] GameObject playerPrefab;
 
     [Header("UI")]
-    public Image player1;
-    public Image player2;
+    public UIImageSwapper player1;
+    public UIImageSwapper player2;
 
     [ReadOnly] List<GameObject> playerList = new List<GameObject>();
 
@@ -27,13 +25,13 @@ public class PlayerJoinManager : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput) { 
         playerList.Add(playerInput.gameObject);
         DontDestroyOnLoad(playerInput.gameObject);
-        if (playerList.Count >= 1 )
+        if (playerList.Count == 1 )
         {
-            player1.color = Color.green;
+            player1.SwapImagesWithFade();
         }
         if (playerList.Count >= 2 )
         {
-            player2.color = Color.green;
+            player2.SwapImagesWithFade();
         }
     }
 
