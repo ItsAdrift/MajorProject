@@ -23,7 +23,15 @@ public class ProgressionManager : MonoBehaviour
 
     OrderManager orderManager;
     RecipeUnlockManager recipeUnlockManager;
-    
+
+    [Header("Benches")]
+    public MachineIndicator fabrication;
+    public MachineIndicator workbench;
+    public MachineIndicator assembly;
+
+    private Dictionary<ItemType, MachineIndicator> machineDictionary = new Dictionary<ItemType, MachineIndicator>();
+
+    [ReadOnly] public List<MachineIndicator> activeIndicators = new List<MachineIndicator>();
 
     public void Start()
     {
@@ -32,13 +40,25 @@ public class ProgressionManager : MonoBehaviour
 
         orderManager.CreateOrder(stages[0].nextOrder.id);
         recipeUnlockManager.AddRecipeToQueue(firstRecipe);
+
+        machineDictionary.Add(firstRecipe.result, fabrication);
+        ActivateIndicator(fabrication);
+
+        machineDictionary.Add(orderItems[0].type, workbench);
+        machineDictionary.Add(orderItems[1].type, workbench);
+        machineDictionary.Add(orderItems[2].type, workbench);
+        machineDictionary.Add(orderItems[3].type, fabrication);
+        machineDictionary.Add(orderItems[4].type, assembly);
+        machineDictionary.Add(orderItems[5].type, fabrication);
     }
 
     public void OrderCompleted(ItemType type)
     {
+        
         if (type == stages[4].nextOrder) {  // Game Device completed
             tutorial = false; // Tutorial Over, start generating random (& timed) order
             GameManager.Instance.gameTimer.active = true;
+            ResetIndicators();
         }
         if (!tutorial)
         {
@@ -50,6 +70,16 @@ public class ProgressionManager : MonoBehaviour
         {
             stageIndex++;
             orderManager.CreateOrder(stages[stageIndex].nextOrder.id);
+
+            if (machineDictionary.GetValueOrDefault(stages[stageIndex-1].nextOrder) == orderItems[1].type)
+            {
+                Debug.Log("Display/Circuit | Both should be flashing");
+                ActivateIndicator(fabrication);
+            } else
+            {
+                ResetIndicators();
+            }
+            ActivateIndicator(machineDictionary.GetValueOrDefault(stages[stageIndex].nextOrder));
         }
     }
 
@@ -87,6 +117,26 @@ public class ProgressionManager : MonoBehaviour
             
             orderManager.CreateOrder(item.type.id, Random.Range(item.min, item.max + 1));
         }
+    }
+
+    private void ActivateIndicator(MachineIndicator indicator)
+    { 
+        EnableIndicator(indicator);
+    }
+
+    private void ResetIndicators()
+    {
+        foreach (MachineIndicator i in activeIndicators)
+        {
+            i._Reset();
+            i.enabled = false;
+        }
+    }
+
+    private void EnableIndicator(MachineIndicator indicator)
+    {
+        activeIndicators.Add(indicator);
+        indicator.enabled = true;
     }
 
 }

@@ -29,4 +29,9 @@ public class MachineIndicator : MonoBehaviour
                 meshRenderer.material = materialB;
         }
     }
+
+    public void _Reset()
+    {
+        meshRenderer.material = materialA;
+    }
 }
