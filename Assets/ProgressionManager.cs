@@ -29,9 +29,11 @@ public class ProgressionManager : MonoBehaviour
     public MachineIndicator workbench;
     public MachineIndicator assembly;
 
-    private Dictionary<ItemType, MachineIndicator> machineDictionary = new Dictionary<ItemType, MachineIndicator>();
+    public MachineDisplay fabricationDisplay;
+    public MachineDisplay workbenchDisplay;
+    public MachineDisplay assemblyDisplay;
 
-    [ReadOnly] public List<MachineIndicator> activeIndicators = new List<MachineIndicator>();
+    [ReadOnly] public Dictionary<MachineRecipe.Machine, MachineDisplay> displays = new Dictionary<MachineRecipe.Machine, MachineDisplay>();
 
     public void Start()
     {
@@ -41,15 +43,12 @@ public class ProgressionManager : MonoBehaviour
         orderManager.CreateOrder(stages[0].nextOrder.id);
         recipeUnlockManager.AddRecipeToQueue(firstRecipe);
 
-        machineDictionary.Add(firstRecipe.result, fabrication);
-        ActivateIndicator(fabrication);
+        displays.Add(MachineRecipe.Machine.Fabrication_Machine, fabricationDisplay);
+        displays.Add(MachineRecipe.Machine.Workbench, workbenchDisplay);
+        displays.Add(MachineRecipe.Machine.Assembly_Machine, assemblyDisplay);
 
-        machineDictionary.Add(orderItems[0].type, workbench);
-        machineDictionary.Add(orderItems[1].type, workbench);
-        machineDictionary.Add(orderItems[2].type, workbench);
-        machineDictionary.Add(orderItems[3].type, fabrication);
-        machineDictionary.Add(orderItems[4].type, assembly);
-        machineDictionary.Add(orderItems[5].type, fabrication);
+        DisplayRecipeOnMachine(orderItems[0]);
+
     }
 
     public void OrderCompleted(ItemType type)
@@ -58,7 +57,6 @@ public class ProgressionManager : MonoBehaviour
         if (type == stages[4].nextOrder) {  // Game Device completed
             tutorial = false; // Tutorial Over, start generating random (& timed) order
             GameManager.Instance.gameTimer.active = true;
-            ResetIndicators();
         }
         if (!tutorial)
         {
@@ -71,16 +69,17 @@ public class ProgressionManager : MonoBehaviour
             stageIndex++;
             orderManager.CreateOrder(stages[stageIndex].nextOrder.id);
 
-            if (machineDictionary.GetValueOrDefault(stages[stageIndex-1].nextOrder) == orderItems[1].type)
-            {
-                Debug.Log("Display/Circuit | Both should be flashing");
-                ActivateIndicator(fabrication);
-            } else
-            {
-                ResetIndicators();
-            }
-            ActivateIndicator(machineDictionary.GetValueOrDefault(stages[stageIndex].nextOrder));
+            DisplayRecipeOnMachine(Lookup(stages[stageIndex].nextOrder));
         }
+    }
+
+    private OrderItem Lookup(ItemType type)
+    {
+        foreach (OrderItem item in orderItems) {
+            if (item.type == type) return item;
+        }
+
+        return null;
     }
 
     public void CreateRandomOrder()
@@ -119,24 +118,20 @@ public class ProgressionManager : MonoBehaviour
         }
     }
 
-    private void ActivateIndicator(MachineIndicator indicator)
-    { 
-        EnableIndicator(indicator);
-    }
-
-    private void ResetIndicators()
+    public void DisplayRecipeOnMachine(OrderItem item)
     {
-        foreach (MachineIndicator i in activeIndicators)
+        Debug.Log("Displaying");
+        foreach (MachineRecipe r in item.requiredRecipes)
         {
-            i._Reset();
-            i.enabled = false;
-        }
-    }
+            MachineDisplay display = displays.GetValueOrDefault(r.producedIn);
+            if (display != null)
+            {
+                // Add items to queue
+                display.AddItemTypesToQueue(r, r.ingredients);
+            }
 
-    private void EnableIndicator(MachineIndicator indicator)
-    {
-        activeIndicators.Add(indicator);
-        indicator.enabled = true;
+        }
+
     }
 
 }

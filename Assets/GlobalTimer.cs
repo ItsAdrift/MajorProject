@@ -13,6 +13,8 @@ public class GlobalTimer : MonoBehaviour
 
     [HideInInspector] public UnityEvent timerInterval;
 
+    [HideInInspector] public bool indicatorState = false;
+
     private void Awake()
     {
         instance = this;
@@ -42,6 +44,8 @@ public class GlobalTimer : MonoBehaviour
             // Reset the timer
             timer = 0f;
             timerInterval.Invoke();
+
+            indicatorState = !indicatorState;
 
             // Attempt to move all the conveyors
             foreach (ConveyorBelt conveyor in conveyors)

@@ -6,6 +6,7 @@ using UnityEngine;
 public class OrderItem : ScriptableObject
 {
     public ItemType type;
+    public MachineRecipe[] requiredRecipes;
     [Range(1, 120)]
     public int min;
 

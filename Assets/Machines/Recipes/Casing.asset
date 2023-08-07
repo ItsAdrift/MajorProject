@@ -17,5 +17,6 @@ MonoBehaviour:
   processsingTime: 2
   ingredients:
   - {fileID: 11400000, guid: f76081b13938aaa42a75b4dcf92120e5, type: 2}
+  - {fileID: 11400000, guid: 472938bdfa2e2c84381e2329ace884f4, type: 2}
   result: {fileID: 11400000, guid: f3f470215856f4547bac68b45d387a59, type: 2}
   producedIn: 1

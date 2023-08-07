@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Casing
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: f3f470215856f4547bac68b45d387a59, type: 2}
+  requiredRecipes:
+  - {fileID: 11400000, guid: 150c5f105bf5f76428368bc30cf40637, type: 2}
   min: 40
   max: 60

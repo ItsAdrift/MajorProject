@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Display
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: b8ef27b9afeddda419458a0f9f54fbbd, type: 2}
+  requiredRecipes:
+  - {fileID: 11400000, guid: cf2f5ce1a2209ca448d11dcca6c7cbe0, type: 2}
+  - {fileID: 11400000, guid: c0d3957082908004e9ed5e57878da317, type: 2}
   min: 60
   max: 80

@@ -13,5 +13,12 @@ MonoBehaviour:
   m_Name: Gaming Device
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: afe48de2ee9b32c4484182391998e9c3, type: 2}
+  requiredRecipes:
+  - {fileID: 11400000, guid: 12483d68a51909e4085f2c56eaa02c4f, type: 2}
+  - {fileID: 11400000, guid: b6a19edf8ae260a48897ebe548d6bba4, type: 2}
+  - {fileID: 11400000, guid: cf2f5ce1a2209ca448d11dcca6c7cbe0, type: 2}
+  - {fileID: 11400000, guid: 150c5f105bf5f76428368bc30cf40637, type: 2}
+  - {fileID: 11400000, guid: c0d3957082908004e9ed5e57878da317, type: 2}
+  - {fileID: 11400000, guid: 13fb28a57caea1f40ad224f6131a6b8b, type: 2}
   min: 120
   max: 120

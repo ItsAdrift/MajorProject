@@ -69,6 +69,7 @@ public class MachineProductionHandler : MonoBehaviour
         }
         
         GameManager.Instance.goalManager.ItemProduced(recipe.result);
+        GetComponent<MachineDisplay>().OnItemProduced(recipe.result);
 
 
         Destroy(this);
