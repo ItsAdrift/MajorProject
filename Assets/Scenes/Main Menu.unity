@@ -2282,6 +2282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4363877008003803352, guid: edc0eb2b2a9512645bc089dc38da1ca1,
     type: 3}
+  player1Mat: {fileID: 2100000, guid: ad8f20569e316534381034dbbe2e0cc9, type: 2}
+  player2Mat: {fileID: 2100000, guid: 2dd5b667c12380a439b3fe22af8a50de, type: 2}
   player1: {fileID: 412797304}
   player2: {fileID: 275406029}
   slider: {fileID: 795094549}

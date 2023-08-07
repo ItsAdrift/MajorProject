@@ -1,7 +1,5 @@
-using System.Collections;
+using JetBrains.Annotations;
 using System.Collections.Generic;
-using System.ComponentModel;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class ProgressionManager : MonoBehaviour
@@ -21,7 +19,7 @@ public class ProgressionManager : MonoBehaviour
 
     [Header("Additional Orders")]
     public int maxOrders = 3;
-    public int additionalOrderChance = 25;
+    public int additionalOrderChance = 10;
 
     OrderManager orderManager;
     RecipeUnlockManager recipeUnlockManager;
@@ -38,9 +36,10 @@ public class ProgressionManager : MonoBehaviour
 
     public void OrderCompleted(ItemType type)
     {
-        if (type == stages[4].nextOrder) // Game Device completed
+        if (type == stages[4].nextOrder) {  // Game Device completed
             tutorial = false; // Tutorial Over, start generating random (& timed) order
-
+            GameManager.Instance.gameTimer.active = true;
+        }
         if (!tutorial)
         {
             CreateRandomOrder();
@@ -59,7 +58,7 @@ public class ProgressionManager : MonoBehaviour
         int amountOfOrders = 1;
 
         int outstandingOrders = orderManager.activeOrders.Count;
-        if (outstandingOrders + 1 < maxOrders && Random.Range(0, 100) > additionalOrderChance)
+        if (outstandingOrders + 1 < maxOrders && Random.Range(0, 100) < additionalOrderChance)
         {
             amountOfOrders++;
         }
@@ -72,7 +71,20 @@ public class ProgressionManager : MonoBehaviour
     {
        for (int i = 0; i < amount; i++)
         {
-            OrderItem item = orderItems[Random.Range(0, orderItems.Length)];
+            List<OrderItem> oi = new List<OrderItem>();
+            oi.AddRange(orderItems);
+
+            foreach (Order order in orderManager.activeOrders)
+            {
+                if (order.type == orderItems[4].type)
+                {
+                    oi.Remove(orderItems[4]);
+                    // Has a game device don't make another
+                }
+            }
+
+            OrderItem item = oi[Random.Range(0, oi.Count)];
+            
             orderManager.CreateOrder(item.type.id, Random.Range(item.min, item.max + 1));
         }
     }

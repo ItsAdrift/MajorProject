@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Single Battery
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 219a3ae1e4549f3418057a34941eadf5, type: 2}
-  min: 35
-  max: 45
+  min: 45
+  max: 50

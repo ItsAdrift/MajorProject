@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,15 +18,19 @@ public class GameManager : MonoBehaviour
     public ItemType[] startItems;
     [ReadOnly] public List<ItemType> unlockedItems = new List<ItemType>();
 
-
     [Header("Scripts")]
     [SerializeField] Money money;
+    [SerializeField] public GameTimer gameTimer;
     [SerializeField] public GoalManager goalManager;
     [SerializeField] public RecipeUnlockManager recipeUnlockManager;
     [SerializeField] public OrderManager orderManager;
     [SerializeField] public PalletManager palletManager;
 
-    
+
+    [Header("Game Over")]
+    [SerializeField] public GameObject standardCanvas;
+    [SerializeField] public GameObject gameOverCanvas;
+    [SerializeField] TMP_Text scoreText;
 
     // Start is called before the first frame update
     void Awake()
@@ -69,6 +75,25 @@ public class GameManager : MonoBehaviour
     public void PlayerJoined()
     {
 
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void GameOver()
+    {
+        Destroy(FindObjectOfType<PlayerInputManager>().gameObject);
+        foreach (PlayerInput playerInput in FindObjectsOfType<PlayerInput>())
+        {
+            Destroy(playerInput.gameObject);
+        }
+
+        standardCanvas.SetActive(false);
+        gameOverCanvas.SetActive(true);
+
+        scoreText.text = ""+money.money;
     }
 
 }

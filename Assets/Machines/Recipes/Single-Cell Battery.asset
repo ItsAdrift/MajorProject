@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Single Cell Battery
   id: single_cell_battery
-  processsingTime: 4
+  processsingTime: 2
   ingredients:
   - {fileID: 11400000, guid: 472938bdfa2e2c84381e2329ace884f4, type: 2}
   - {fileID: 11400000, guid: d6ab41119909fc14c9f4319860027453, type: 2}
   result: {fileID: 11400000, guid: 219a3ae1e4549f3418057a34941eadf5, type: 2}
+  producedIn: 0

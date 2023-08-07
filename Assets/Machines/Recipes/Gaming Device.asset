@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Gaming Device
   id: gaming_device
-  processsingTime: 7
+  processsingTime: 4
   ingredients:
   - {fileID: 11400000, guid: 0550bedaa95aa154fa61bb07a540e152, type: 2}
   - {fileID: 11400000, guid: 89f6a7c75c1a07e4b95849a7e2ae5616, type: 2}

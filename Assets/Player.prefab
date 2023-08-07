@@ -442,9 +442,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdDuration: 2
-  onGameStart:
-    m_PersistentCalls:
-      m_Calls: []
+  renderers:
+  - {fileID: 4363877009347206873}
+  - {fileID: 6398809193201382991}
 --- !u!114 &3886081853135062235
 MonoBehaviour:
   m_ObjectHideFlags: 0

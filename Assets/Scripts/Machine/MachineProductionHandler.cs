@@ -61,6 +61,7 @@ public class MachineProductionHandler : MonoBehaviour
             machine.outputSlot.item = machine.outputSlot.gameObject.GetComponent<Item>();
         }
         machine.outputSlot.item.type = recipe.result;
+        machine.outputSlot.hasItem = true;
         foreach (ItemSlot slot in machine.itemSlots)
         {
             slot.hasItem = false;

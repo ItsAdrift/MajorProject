@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Double Cell Battery
   id: double_cell_battery
-  processsingTime: 5
+  processsingTime: 3
   ingredients:
   - {fileID: 11400000, guid: 0c20242523e37db4f9221187be53b0e3, type: 2}
   - {fileID: 11400000, guid: d6ab41119909fc14c9f4319860027453, type: 2}

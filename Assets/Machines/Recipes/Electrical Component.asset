@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: electrical_component
   id: Electrical Component
-  processsingTime: 3
+  processsingTime: 1
   ingredients:
   - {fileID: 11400000, guid: 472938bdfa2e2c84381e2329ace884f4, type: 2}
   - {fileID: 11400000, guid: d4f54f48c75c85043bad760e55e9a1ec, type: 2}
   result: {fileID: 11400000, guid: eff6da2e262db2d44a3d17fb450d42cf, type: 2}
+  producedIn: 0

@@ -5,13 +5,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerJoinManager : MonoBehaviour
 {
     public static PlayerJoinManager Instance;
 
     [SerializeField] GameObject playerPrefab;
+
+    [Header("Materials")]
+    public Material player1Mat;
+    public Material player2Mat;
 
     [Header("UI")]
     public UIImageSwapper player1;
@@ -31,13 +34,21 @@ public class PlayerJoinManager : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput) { 
         playerList.Add(playerInput.gameObject);
         DontDestroyOnLoad(playerInput.gameObject);
+
+        playerInput.gameObject.GetComponent<PlayerController>().enabled = false;
+        playerInput.gameObject.GetComponent<CharacterController>().enabled = false;
+
         if (playerList.Count == 1 )
         {
             player1.SwapImagesWithFade();
+            playerInput.gameObject.GetComponent<Player>().SwapMaterial(player1Mat);
+            Debug.Log("Swapping Player 1 Mat");
         }
         if (playerList.Count >= 2 )
         {
             player2.SwapImagesWithFade();
+            playerInput.gameObject.GetComponent<Player>().SwapMaterial(player2Mat);
+            Debug.Log("Swapping Player 2 Mat");
         }
     }
 
@@ -61,6 +72,12 @@ public class PlayerJoinManager : MonoBehaviour
             playerList[i].transform.position = spawnPoint.transform.position;
             Debug.Log("Moved Player " + i + " to " + spawnPoint.transform.position);
             i++;
+        }
+
+        foreach (GameObject player in playerList)
+        {
+            player.GetComponent<PlayerController>().enabled = true;
+            player.GetComponent<CharacterController>().enabled = true;
         }
     }
 }

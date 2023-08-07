@@ -15,12 +15,22 @@ public class Player : MonoBehaviour
 
     private bool gameStarted = false;
 
+    public MeshRenderer[] renderers;
+
     public void OnSubmit(CallbackContext context)
     {
         if (context.phase == UnityEngine.InputSystem.InputActionPhase.Performed)
         {
-            Debug.Log("Continue_UI");
-            GameManager.Instance.recipeUnlockManager.Continue();
+            if (GameManager.Instance != null && GameManager.Instance.recipeUnlockManager != null)
+                GameManager.Instance.recipeUnlockManager.Continue();
+        }
+    }
+
+    public void SwapMaterial(Material mat)
+    {
+        foreach (MeshRenderer renderer in renderers)
+        {
+            renderer.SetMaterials(new List<Material>() { mat });
         }
     }
 

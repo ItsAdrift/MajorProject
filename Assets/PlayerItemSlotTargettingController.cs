@@ -39,6 +39,15 @@ public class PlayerItemSlotTargettingController : MonoBehaviour
                     if (s.hasItem)
                         continue;
 
+                    if (s.gameObject.GetComponentInParent<Machine>() != null)
+                    {
+                        if (s.gameObject.GetComponentInParent<Machine>().outputSlot != null)
+                        {
+                            if (s.gameObject.GetComponentInParent<Machine>().outputSlot.hasItem)
+                                continue;
+                        }
+                    }
+
                     slot = s;
                     minSqrDistance = sqrDistanceToCenter;
                     slots.Add(colliders[i].transform.position);

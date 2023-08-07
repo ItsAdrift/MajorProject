@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameTimer : MonoBehaviour
 {
+    public bool active = false;
+
     public int time = 120;
 
     public float interval = 1f; // The interval in seconds between each update
@@ -15,6 +17,9 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
+        if (!active)
+            return;
+
         // Increment the timer
         timer += Time.deltaTime;
 
@@ -28,6 +33,8 @@ public class GameTimer : MonoBehaviour
 
             if (time <= 0)
             {
+                // Game Over
+                GameManager.Instance.GameOver();
                 enabled = false;
             }
         }
