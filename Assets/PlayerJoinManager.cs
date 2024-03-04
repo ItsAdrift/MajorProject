@@ -29,14 +29,20 @@ public class PlayerJoinManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+        
+    }
+
+    private void Awake()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     public void OnPlayerJoined(PlayerInput playerInput) { 
         playerList.Add(playerInput.gameObject);
         DontDestroyOnLoad(playerInput.gameObject);
 
-        playerInput.gameObject.GetComponent<PlayerController>().enabled = false;
-        playerInput.gameObject.GetComponent<CharacterController>().enabled = false;
+        //playerInput.gameObject.GetComponent<PlayerController>().enabled = false;
+        //playerInput.gameObject.GetComponent<CharacterController>().enabled = false;
 
         if (playerList.Count == 1 )
         {
@@ -61,8 +67,12 @@ public class PlayerJoinManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex != 1)
-            return;
+        Debug.Log("Build Index: " + scene.buildIndex);
+
+        //if (scene.buildIndex != 1)
+        //    return;
+
+        Debug.Log("Scene Loaded!!!!!!!!!!!");
 
         Debug.Log(FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None).Length.ToString());
 
@@ -74,10 +84,15 @@ public class PlayerJoinManager : MonoBehaviour
             i++;
         }
 
+        Debug.Log(playerList.Count);
+
         foreach (GameObject player in playerList)
         {
+            Debug.Log(player.name);
             player.GetComponent<PlayerController>().enabled = true;
             player.GetComponent<CharacterController>().enabled = true;
+
+            FindObjectOfType<CameraControl>().m_Targets.Add(player.transform);
         }
     }
 }

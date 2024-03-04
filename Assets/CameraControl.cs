@@ -35,6 +35,18 @@ public class CameraControl : MonoBehaviour
     }
 
 
+    private void FixedUpdate()
+    {
+        if (m_Targets.Count == 0)
+        {
+            foreach (Player t in FindObjectsOfType<Player>())
+            {
+                m_Targets.Add(t.transform);
+                Debug.Log("Adding Transform To Camera Tracking");
+            }
+        }
+    }
+
     private void Move()
     {
         // Find the average position of the targets.

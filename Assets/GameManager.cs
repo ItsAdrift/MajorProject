@@ -84,6 +84,11 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        foreach(Item item in FindObjectsOfType<Item>())
+        {
+            Destroy(item.gameObject);
+        }
+
         Destroy(FindObjectOfType<PlayerInputManager>().gameObject);
         foreach (PlayerInput playerInput in FindObjectsOfType<PlayerInput>())
         {
